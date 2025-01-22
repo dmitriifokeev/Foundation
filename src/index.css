@@ -1,0 +1,46 @@
+@layer components {
+  .body-12 {
+    @apply text-[12px]  font-secondary font-normal text-neutral-50 leading-[150%];
+  }
+
+  .body-14 {
+    @apply text-sm font-secondary  font-normal text-neutral-50 leading-[150%];
+  }
+
+  .body-16 {
+    @apply text-[16px] font-secondary  font-normal text-neutral-50 leading-[150%];
+  }
+
+  .body-18 {
+    @apply text-lg font-secondary  font-normal text-neutral-50 leading-[150%];
+  }
+  .body-20 {
+    @apply text-[20px] font-secondary  font-normal text-neutral-50 leading-[150%];
+  }
+}
+
+.h1 {
+  @apply text-5xl font-main font-medium text-neutral-50 leading-[120%];
+}
+
+.h2 {
+  @apply text-[32px] font-main font-medium text-neutral-50 leading-[120%];
+}
+
+.h3 {
+  @apply text-2xl font-main font-medium text-neutral-50 leading-[120%];
+}
+
+.h4 {
+  @apply text-[20px] font-main font-medium text-neutral-50 leading-[120%];
+}
+.h5 {
+  @apply text-[16px] font-main font-medium text-neutral-50 leading-[120%];
+}
+.h6 {
+  @apply text-sm  font-main font-medium text-neutral-50 leading-[120%];
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
