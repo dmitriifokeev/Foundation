@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import ArrowIcon from "./ArrowIcon";
+import { ButtonArrowIcon } from "./ArrowIcons";
 
 const Button = ({
   variant = "main", // Значение по умолчанию
@@ -38,7 +38,7 @@ const Button = ({
       {children}
       {iconed && (
         <span className="transition-all duration-200">
-          <ArrowIcon className={iconColor} size={14} />
+          <ButtonArrowIcon className={iconColor} size={14} />
         </span>
       )}
     </button>

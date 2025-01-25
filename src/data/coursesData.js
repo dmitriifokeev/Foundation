@@ -2,6 +2,17 @@ import htmlEssential from "../assets/img/htmlEssential.jpg";
 import jsEssentialFront from "../assets/img/jsEssentialFront.jpg";
 import reactEssential from "../assets/img/reactEssential.jpg";
 import htmlPro from "../assets/img/htmlPro.jpg";
+import tildaEssential from "../assets/img/tildaEssential.jpg";
+import webflowEssential from "../assets/img/webflowEssential.jpg";
+import wordPressEssential from "../assets/img/wordPressEssential.jpg";
+import figmaEssential from "../assets/img/figmaEssential.jpg";
+import figmaAnimation from "../assets/img/figmaAnimations.jpg";
+import designTheoryEssential from "../assets/img/designTheoryEssential.jpg";
+import photoshopEssential from "../assets/img/photoshopEsssential.jpg";
+import photoshopPro from "../assets/img/photoshopPro.jpg";
+import illustratorEssential from "../assets/img/illustratorEssential.jpg";
+import afterEffectsEssential from "../assets/img/afterEffectsEssential.jpg";
+import premiereProEssential from "../assets/img/premiereProEssential.jpg";
 
 const coursesData = {
   webDevelopment: [
@@ -27,9 +38,9 @@ const coursesData = {
       levelDifficulties: 1,
 
       detailsDescription: {
-        lessons: "226 уроков",
-        hours: "40 часа видео уроков",
-        months: "4 месяца время прохождения",
+        lessons: "246 уроков",
+        hours: "30 часа видео уроков",
+        months: "2 месяца время прохождения",
         practices: "20 самостоятельных практик",
         tests: "10 тестов",
         projects: "5 проектов",
@@ -81,11 +92,11 @@ const coursesData = {
   CMS: [
     {
       label: {
-        title: "Создание сайтов Tilda",
+        title: "Создание сайтов в Tilda",
         tag: "C нуля",
         type: "Курс",
       },
-      bgImg: "./assets/hero.jpg",
+      bgImg: tildaEssential,
       levelDifficulties: 1,
 
       detailsDescription: {
@@ -101,11 +112,11 @@ const coursesData = {
     },
     {
       label: {
-        title: "Верстка сайтов в Webflow",
+        title: "Верстка в Webflow",
         tag: "C нуля",
         type: "Курс",
       },
-      bgImg: "./assets/hero.jpg",
+      bgImg: webflowEssential,
       levelDifficulties: 1,
 
       detailsDescription: {
@@ -121,11 +132,11 @@ const coursesData = {
     },
     {
       label: {
-        title: "Создание сайтов в WordPress",
+        title: "WordPress",
         tag: "C нуля",
         type: "Курс",
       },
-      bgImg: "./assets/hero.jpg",
+      bgImg: wordPressEssential,
       levelDifficulties: 1,
 
       detailsDescription: {
@@ -147,7 +158,7 @@ const coursesData = {
         tag: "C нуля",
         type: "Курс",
       },
-      bgImg: "./assets/hero.jpg",
+      bgImg: figmaEssential,
       levelDifficulties: 1,
 
       detailsDescription: {
@@ -167,31 +178,27 @@ const coursesData = {
         tag: "C знаниями основ Figma",
         type: "Курс",
       },
-      bgImg: "./assets/hero.jpg",
+      bgImg: figmaAnimation,
       levelDifficulties: 2,
 
-      frontDescription: {
-        img: "./assets/hero.jpg",
-
-        detailsDescription: {
-          lessons: "226 уроков",
-          hours: "40 часа видео уроков",
-          months: "4 месяца время прохождения",
-          practices: "20 самостоятельных практик",
-          tests: "10 тестов",
-          projects: "5 проектов",
-          oldPrice: "34,990 руб",
-          price: "24,990 руб",
-        },
+      detailsDescription: {
+        lessons: "226 уроков",
+        hours: "40 часа видео уроков",
+        months: "4 месяца время прохождения",
+        practices: "20 самостоятельных практик",
+        tests: "10 тестов",
+        projects: "5 проектов",
+        oldPrice: "34,990 руб",
+        price: "24,990 руб",
       },
     },
     {
       label: {
-        title: "Теория цифрового дизайна",
+        title: "Теория дизайна",
         tag: "C нуля",
         type: "Курс",
       },
-      bgImg: "./assets/hero.jpg",
+      bgImg: designTheoryEssential,
       levelDifficulties: 1,
 
       detailsDescription: {
@@ -213,7 +220,7 @@ const coursesData = {
         tag: "C нуля",
         type: "Курс",
       },
-      bgImg: "./assets/hero.jpg",
+      bgImg: illustratorEssential,
       levelDifficulties: 1,
 
       detailsDescription: {
@@ -233,7 +240,28 @@ const coursesData = {
         tag: "C нуля",
         type: "Курс",
       },
-      bgImg: "./assets/hero.jpg",
+      bgImg: photoshopEssential,
+      levelDifficulties: 1,
+
+      detailsDescription: {
+        lessons: "226 уроков",
+        hours: "40 часа видео уроков",
+        months: "4 месяца время прохождения",
+        practices: "20 самостоятельных практик",
+        tests: "10 тестов",
+        projects: "5 проектов",
+        oldPrice: "34,990 руб",
+        price: "24,990 руб",
+      },
+    },
+
+    {
+      label: {
+        title: "Adobe After Effects",
+        tag: "C нуля",
+        type: "Курс",
+      },
+      bgImg: afterEffectsEssential,
       levelDifficulties: 1,
 
       detailsDescription: {
@@ -250,31 +278,11 @@ const coursesData = {
     {
       label: {
         title: "Photoshop (Pro)",
-        tag: "Со знаниями основ Photoshop",
+        tag: "Со знаниями Photoshop",
         type: "Курс",
       },
-      bgImg: "./assets/hero.jpg",
+      bgImg: photoshopPro,
       levelDifficulties: 2,
-
-      detailsDescription: {
-        lessons: "226 уроков",
-        hours: "40 часа видео уроков",
-        months: "4 месяца время прохождения",
-        practices: "20 самостоятельных практик",
-        tests: "10 тестов",
-        projects: "5 проектов",
-        oldPrice: "34,990 руб",
-        price: "24,990 руб",
-      },
-    },
-    {
-      label: {
-        title: "Adobe After Effects",
-        tag: "C нуля",
-        type: "Курс",
-      },
-      bgImg: "./assets/hero.jpg",
-      levelDifficulties: 1,
 
       detailsDescription: {
         lessons: "226 уроков",
@@ -295,7 +303,7 @@ const coursesData = {
         tag: "C нуля",
         type: "Курс",
       },
-      bgImg: "./assets/hero.jpg",
+      bgImg: premiereProEssential,
       levelDifficulties: 1,
 
       detailsDescription: {
@@ -315,7 +323,7 @@ const coursesData = {
         tag: "C нуля",
         type: "Курс",
       },
-      bgImg: "./assets/hero.jpg",
+      bgImg: afterEffectsEssential,
       levelDifficulties: 1,
 
       detailsDescription: {
@@ -330,8 +338,6 @@ const coursesData = {
       },
     },
   ],
-  proLevel: [],
-  fromZero: [],
   programms: [
     {
       label: {

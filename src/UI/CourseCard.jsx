@@ -4,8 +4,14 @@ function CourseCard({ course }) {
   const {
     label: { title, tag, type } = {},
     bgImg = "",
+    levelDifficulties = 1, // Уровень сложности
     detailsDescription = {}, // Используем detailsDescription на верхнем уровне
   } = course || {};
+
+  const levelClasses =
+    levelDifficulties === 2
+      ? "bg-secondary-50 text-secondary-700"
+      : "bg-primary-100 text-primary-700";
 
   return (
     <div className="bg-neutral-700 rounded-lg overflow-hidden group relative pb-20">
@@ -15,9 +21,7 @@ function CourseCard({ course }) {
           <div className="flex items-center gap-2">
             <span className="body-14 text-neutral-600">{type}</span>
             <span className="text-neutral-600 text-[12px]">•</span>
-            <span className="bg-secondary-50 text-secondary-700 body-14 font-medium px-3 rounded-full">
-              {tag}
-            </span>
+            <span className={`body-14 font-medium px-3 rounded-full ${levelClasses}`}>{tag}</span>
           </div>
           <h2 className="h4 font-bold text-neutral-800">{title}</h2>
         </div>
@@ -25,13 +29,12 @@ function CourseCard({ course }) {
 
       {/* Main content */}
       <div className="relative w-full h-52">
-        {/* Background Image */}
+        /{/* Background Image */}
         <img
           src={bgImg}
           alt={title}
           className="absolute inset-0 w-full h-full object-cover origin-center rotate-[-12deg] z-10 rounded-lg"
         />
-
         {/* Back Details */}
         <div className="absolute inset-0 pl-32 pt-20 bg-black/40 backdrop-blur-md rounded-lg origin-center rotate-[-12deg] z-20 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
           <h5 className="h5 mb-12 text-white">Что внутри</h5>
