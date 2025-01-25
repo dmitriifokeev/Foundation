@@ -13,6 +13,7 @@ import photoshopPro from "../assets/img/photoshopPro.jpg";
 import illustratorEssential from "../assets/img/illustratorEssential.jpg";
 import afterEffectsEssential from "../assets/img/afterEffectsEssential.jpg";
 import premiereProEssential from "../assets/img/premiereProEssential.jpg";
+import programmWebDev from "../assets/img/programmWebDev.png";
 
 const coursesData = {
   webDevelopment: [
@@ -345,7 +346,8 @@ const coursesData = {
         tag: "C нуля",
         type: "Программа",
       },
-      bgImg: "./assets/hero.jpg",
+      group: "webDevelopment",
+      bgImg: programmWebDev,
       levelDifficulties: 1,
 
       courses: [
@@ -359,7 +361,7 @@ const coursesData = {
           projects: "5 проектов",
         },
         {
-          title: "Верста HTML / CSS",
+          title: "Верстка HTML / CSS",
           lessons: "226 уроков",
           hours: "40 часа видео уроков",
           months: "4 месяца время прохождения",
@@ -369,6 +371,88 @@ const coursesData = {
         },
         {
           title: "React JS",
+          lessons: "226 уроков",
+          hours: "40 часа видео уроков",
+          months: "4 месяца время прохождения",
+          practices: "20 самостоятельных практик",
+          tests: "10 тестов",
+          projects: "5 проектов",
+        },
+        { price: "24,990 руб", oldPrice: "34,990 руб" },
+      ],
+    },
+    {
+      label: {
+        title: "Графический дизайнер с нуля",
+        tag: "C нуля",
+        type: "Программа",
+      },
+      group: "graphicDesign",
+      bgImg: programmWebDev,
+      levelDifficulties: 1,
+
+      courses: [
+        {
+          title: "Photoshop с нуля",
+          lessons: "226 уроков",
+          hours: "40 часа видео уроков",
+          months: "4 месяца время прохождения",
+          practices: "20 самостоятельных практик",
+          tests: "10 тестов",
+          projects: "5 проектов",
+        },
+        {
+          title: "After Effects с нуля",
+          lessons: "226 уроков",
+          hours: "40 часа видео уроков",
+          months: "4 месяца время прохождения",
+          practices: "20 самостоятельных практик",
+          tests: "10 тестов",
+          projects: "5 проектов",
+        },
+        {
+          title: "Illustrator с нуля",
+          lessons: "226 уроков",
+          hours: "40 часа видео уроков",
+          months: "4 месяца время прохождения",
+          practices: "20 самостоятельных практик",
+          tests: "10 тестов",
+          projects: "5 проектов",
+        },
+        { price: "24,990 руб", oldPrice: "34,990 руб" },
+      ],
+    },
+    {
+      label: {
+        title: "Веб дизайнер с нуля",
+        tag: "C нуля",
+        type: "Программа",
+      },
+      group: "webDesign",
+      bgImg: programmWebDev,
+      levelDifficulties: 1,
+
+      courses: [
+        {
+          title: "Figma с нуля",
+          lessons: "226 уроков",
+          hours: "40 часа видео уроков",
+          months: "4 месяца время прохождения",
+          practices: "20 самостоятельных практик",
+          tests: "10 тестов",
+          projects: "5 проектов",
+        },
+        {
+          title: "Figma Анимации",
+          lessons: "226 уроков",
+          hours: "40 часа видео уроков",
+          months: "4 месяца время прохождения",
+          practices: "20 самостоятельных практик",
+          tests: "10 тестов",
+          projects: "5 проектов",
+        },
+        {
+          title: "Теория дизайна",
           lessons: "226 уроков",
           hours: "40 часа видео уроков",
           months: "4 месяца время прохождения",

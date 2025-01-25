@@ -29,7 +29,7 @@ function CourseCard({ course }) {
 
       {/* Main content */}
       <div className="relative w-full h-52">
-        /{/* Background Image */}
+        {/* Background Image */}
         <img
           src={bgImg}
           alt={title}

@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { ButtonArrowIcon } from "./ArrowIcons";
+import { ButtonArrowIcon } from "./Svgs";
 
 const Button = ({
   variant = "main", // Значение по умолчанию
