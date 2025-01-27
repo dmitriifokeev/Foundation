@@ -14,16 +14,16 @@ function CourseCard({ course }) {
       : "bg-primary-100 text-primary-700";
 
   return (
-    <div className="bg-neutral-700 rounded-lg overflow-hidden group relative pb-20">
+    <div className="relative pb-20 overflow-hidden bg-neutral-700 rounded-xl group">
       {/* Label */}
-      <div className="pt-8 px-16 mb-8">
-        <div className="bg-neutral-50 rounded-lg p-16">
+      <div className="px-16 pt-8 mb-8">
+        <div className="p-16 bg-neutral-50 rounded-xl">
           <div className="flex items-center gap-2">
             <span className="body-14 text-neutral-600">{type}</span>
             <span className="text-neutral-600 text-[12px]">•</span>
             <span className={`body-14 font-medium px-3 rounded-full ${levelClasses}`}>{tag}</span>
           </div>
-          <h2 className="h4 font-bold text-neutral-800">{title}</h2>
+          <h2 className="font-bold h4 text-neutral-800">{title}</h2>
         </div>
       </div>
 
@@ -33,17 +33,17 @@ function CourseCard({ course }) {
         <img
           src={bgImg}
           alt={title}
-          className="absolute inset-0 w-full h-full object-cover origin-center rotate-[-12deg] z-10 rounded-lg"
+          className="absolute inset-0 w-full h-full object-cover origin-center rotate-[-12deg] z-10 rounded-xl"
         />
         {/* Back Details */}
-        <div className="absolute inset-0 pl-32 pt-20 bg-black/40 backdrop-blur-md rounded-lg origin-center rotate-[-12deg] z-20 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
-          <h5 className="h5 mb-12 text-white">Что внутри</h5>
+        <div className="absolute inset-0 pl-32 pt-20 bg-black/40 backdrop-blur-md rounded-xl origin-center rotate-[-12deg] z-20 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+          <h5 className="mb-12 text-white h5">Что внутри</h5>
 
           {/* Dynamic list of details with separator */}
-          <ul className="flex flex-wrap gap-4 mb-12 items-center">
+          <ul className="flex flex-wrap items-center gap-4 mb-12">
             {Object.entries(detailsDescription).map(([key, value], index, array) => (
               <React.Fragment key={key}>
-                <li className="body-12 text-white">{value}</li>
+                <li className="text-white body-12">{value}</li>
                 {/* Добавляем разделитель, если это не последний элемент */}
                 {index < array.length - 1 && (
                   <span className="text-neutral-400 text-[12px]">•</span>

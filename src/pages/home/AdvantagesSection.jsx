@@ -8,9 +8,9 @@ import video1 from "../../assets/video/video1.mp4";
 export default function AdvantagesSection() {
   return (
     <section className=" bg-neutral-100 pt-80 pb-100">
-      <div className="container m-auto  ">
+      <div className="container m-auto ">
         {/* Заголовок */}
-        <h2 className="h1 font-semibold mb-40 text-neutral-900">Преимущества обучения</h2>
+        <h2 className="mb-40 font-semibold h1 text-neutral-900">Преимущества обучения</h2>
 
         {/* Сетка с блоками */}
         {/*
@@ -25,12 +25,16 @@ export default function AdvantagesSection() {
             <div
               style={{
                 backgroundImage: `url(${bgCircles})`,
+                backgroundRepeat: "no-repeat",
+
+                backgroundSize: "cover",
+                backgroundPosition: "center",
               }}
-              className="relative  rounded-lg p-6 text-white overflow-hidden group"
+              className="relative p-6 overflow-hidden text-white rounded-xl group"
             >
               {/* Передняя сторона */}
-              <div className="  opacity-100 group-hover:opacity-0 transition duration-300">
-                <div className="absolute inset-0 left-[-100px] w-[400px] h-[200px] overflow-hidden [clip-path:polygon(0_0,80%_0,100%_100%,0_100%)] rounded-lg opacity-100 group-hover:opacity-0 transition duration-300">
+              <div className="transition duration-300 opacity-100 group-hover:opacity-0">
+                <div className="absolute inset-0 left-[-100px] w-[400px] h-[200px] overflow-hidden [clip-path:polygon(0_0,80%_0,100%_100%,0_100%)] rounded-xl opacity-100 group-hover:opacity-0 transition duration-300">
                   <img src={bgBlueLines} alt="синий фон" />
                 </div>
 
@@ -40,8 +44,8 @@ export default function AdvantagesSection() {
               </div>
 
               {/* Обратная сторона */}
-              <div className="absolute opacity-0 group-hover:opacity-100 transition duration-300 border border-neutral-300 inset-0 rounded-lg flex flex-col items-start  p-6 ">
-                <h4 className="h4 font-semibold text-neutral-900 mb-8 "> 30 дней гарантии</h4>
+              <div className="absolute inset-0 flex flex-col items-start p-6 transition duration-300 border opacity-0 rounded-xl group-hover:opacity-100 border-neutral-300 ">
+                <h4 className="mb-8 font-semibold h4 text-neutral-900 "> 30 дней гарантии</h4>
 
                 <p className="body-14 text-neutral-600   max-w-[300px]">
                   * 100% возврат средств в течении 30 дней,
@@ -51,7 +55,7 @@ export default function AdvantagesSection() {
 
               <button
                 disabled
-                className="absolute bottom-3 right-3 text-xl leading-none bg-blue-900/30 px-2 py-1 rounded-full opacity-100 group-hover:opacity-0 transition duration-300 	"
+                className="absolute px-2 py-1 text-xl leading-none transition duration-300 rounded-full opacity-100 bottom-3 right-3 bg-blue-900/30 group-hover:opacity-0 "
               >
                 +
               </button>
@@ -62,26 +66,30 @@ export default function AdvantagesSection() {
             <div
               style={{
                 backgroundImage: `url(${bgCircles})`,
+                backgroundRepeat: "no-repeat",
+
+                backgroundSize: "cover",
+                backgroundPosition: "center",
               }}
-              className="relative bg-white rounded-lg p-6 shadow-sm overflow-hidden group"
+              className="relative p-6 overflow-hidden bg-white shadow-sm rounded-xl group"
             >
               {/* Передняя сторона */}
-              <div className="opacity-100 group-hover:opacity-0 transition duration-300">
-                <div className="absolute right-[-170px] top-[-10px] w-[400px] h-[200px] overflow-hidden [clip-path:polygon(0_0,100%_0,100%_100%,20%_100%)] rounded-lg">
+              <div className="transition duration-300 opacity-100 group-hover:opacity-0">
+                <div className="absolute right-[-170px] top-[-10px] w-[400px] h-[200px] overflow-hidden [clip-path:polygon(0_0,100%_0,100%_100%,20%_100%)] rounded-xl">
                   <img src={bgBrownLines} alt="синий фон" />
                 </div>
-                <h3 className="h4 text-neutral-900 font-semibold mb-1">4.85</h3>
-                <p className="body text-gray-600 max-w-64">
+                <h3 className="mb-1 font-semibold h4 text-neutral-900">4.85</h3>
+                <p className="text-gray-600 body max-w-64">
                   Средняя оценка всех курсов на платформе
                 </p>
               </div>
 
               {/* Обратная сторона */}
-              <div className="absolute opacity-0 group-hover:opacity-100 transition duration-300 border border-neutral-300 inset-0 rounded-lg flex flex-col items-start p-6">
+              <div className="absolute inset-0 flex flex-col items-start p-6 transition duration-300 border opacity-0 rounded-xl group-hover:opacity-100 border-neutral-300">
                 {/* Ниже — те же тексты, что и на «передней» стороне, 
         чтобы показать flip-эффект без изменения контента */}
-                <div className="absolute right-[-170px] top-[-10px] w-[400px] h-[200px] overflow-hidden [clip-path:polygon(0_0,100%_0,100%_100%,20%_100%)] rounded-lg"></div>
-                <h4 className="h4 text-neutral-900 font-semibold mb-8">
+                <div className="absolute right-[-170px] top-[-10px] w-[400px] h-[200px] overflow-hidden [clip-path:polygon(0_0,100%_0,100%_100%,20%_100%)] rounded-xl"></div>
+                <h4 className="mb-8 font-semibold h4 text-neutral-900">
                   Более 5 000 реальных отзывов
                 </h4>
                 <p className="body text-gray-600 max-w-[300px]">
@@ -109,7 +117,7 @@ export default function AdvantagesSection() {
               {/* Кнопка со знаком "+" (как в первом блоке) */}
               <button
                 disabled
-                className="absolute bottom-3 right-3 text-xl leading-none bg-blue-900/30 px-2 py-1 rounded-full opacity-100 group-hover:opacity-0 transition duration-300 text-neutral-300"
+                className="absolute px-2 py-1 text-xl leading-none transition duration-300 rounded-full opacity-100 bottom-3 right-3 bg-blue-900/30 group-hover:opacity-0 text-neutral-300"
               >
                 +
               </button>
@@ -119,11 +127,15 @@ export default function AdvantagesSection() {
             <div
               style={{
                 backgroundImage: `url(${bgCircles})`,
+                backgroundRepeat: "no-repeat",
+
+                backgroundSize: "cover",
+                backgroundPosition: "center",
               }}
-              className="relative bg-white rounded-lg p-6 shadow-sm overflow-hidden group"
+              className="relative p-6 overflow-hidden bg-white shadow-sm rounded-xl group"
             >
               {/* Передняя сторона */}
-              <div className="opacity-100 group-hover:opacity-0 transition duration-300">
+              <div className="transition duration-300 opacity-100 group-hover:opacity-0">
                 <h3 className="h3 text-neutral-900 absolute top-1/2 -translate-y-1/2 right-[50px] font-semibold">
                   LIFETIME <br /> ACCESS
                 </h3>
@@ -135,9 +147,9 @@ export default function AdvantagesSection() {
               </div>
 
               {/* Обратная сторона */}
-              <div className="absolute opacity-0 group-hover:opacity-100 transition duration-300 border border-neutral-300 inset-0 rounded-lg flex flex-col items-start p-6">
+              <div className="absolute inset-0 flex flex-col items-start p-6 transition duration-300 border opacity-0 rounded-xl group-hover:opacity-100 border-neutral-300">
                 {/* Повторяем тот же контент для flip-эффекта */}
-                <h4 className="h4 font-semibold text-neutral-900 mb-8 ">
+                <h4 className="mb-8 font-semibold h4 text-neutral-900 ">
                   {" "}
                   Пожизненный доступ к курсам
                 </h4>
@@ -150,7 +162,7 @@ export default function AdvantagesSection() {
               {/* Кнопка со знаком "+" (как в первом блоке) */}
               <button
                 disabled
-                className="absolute bottom-3 right-3 text-xl leading-none bg-blue-900/30 px-2 py-1 rounded-full opacity-100 group-hover:opacity-0 transition duration-300 text-neutral-50"
+                className="absolute px-2 py-1 text-xl leading-none transition duration-300 rounded-full opacity-100 bottom-3 right-3 bg-blue-900/30 group-hover:opacity-0 text-neutral-50"
               >
                 +
               </button>
@@ -160,7 +172,7 @@ export default function AdvantagesSection() {
           {/* Правая колонка - делим на 2 вертикальных ряда */}
           <div className="grid grid-rows-[2fr_130px] gap-8">
             {/* 1) Верхний большой чёрный блок */}
-            <div className="relative rounded-lg overflow-hidden p-6 flex items-center ">
+            <div className="relative flex items-center p-6 overflow-hidden rounded-xl ">
               {/* Само видео на фоне */}
               <video
                 autoPlay
@@ -168,7 +180,7 @@ export default function AdvantagesSection() {
                 muted
                 playsInline
                 src={video1}
-                className="absolute inset-0 w-full h-full object-cover "
+                className="absolute inset-0 object-cover w-full h-full "
               />
 
               {/* Текст поверх видео */}
@@ -183,8 +195,12 @@ export default function AdvantagesSection() {
             <div
               style={{
                 backgroundImage: `url(${bgCircles})`,
+                backgroundRepeat: "no-repeat",
+
+                backgroundSize: "cover",
+                backgroundPosition: "center",
               }}
-              className="bg-white rounded-lg flex items-center justify-center  shadow-sm relative"
+              className="relative flex items-center justify-center bg-white shadow-sm rounded-xl"
             >
               {/* Пример простого SVG-стрелки вправо */}
               <img src={ArrowRight} alt="стрелка вправо" className="w-120 absolute right-[20px]" />

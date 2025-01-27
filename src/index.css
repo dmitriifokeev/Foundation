@@ -1,3 +1,5 @@
+/* Стили для Типографики*/
+
 @layer components {
   .body-12 {
     @apply text-[12px]  font-secondary font-normal text-neutral-50 leading-[150%];
@@ -20,25 +22,57 @@
 }
 
 .h1 {
-  @apply text-5xl font-main font-medium text-neutral-50 leading-[120%];
+  @apply text-5xl font-main font-semibold text-neutral-50 leading-[120%];
 }
 
 .h2 {
-  @apply text-[32px] font-main font-medium text-neutral-50 leading-[120%];
+  @apply text-[32px] font-main font-semibold text-neutral-50 leading-[120%];
 }
 
 .h3 {
-  @apply text-2xl font-main font-medium text-neutral-50 leading-[120%];
+  @apply text-2xl font-main font-semibold text-neutral-50 leading-[120%];
 }
 
 .h4 {
-  @apply text-[20px] font-main font-medium text-neutral-50 leading-[120%];
+  @apply text-[20px] font-main font-semibold text-neutral-50 leading-[120%];
 }
 .h5 {
-  @apply text-[16px] font-main font-medium text-neutral-50 leading-[120%];
+  @apply text-[16px] font-main font-semibold text-neutral-50 leading-[120%];
 }
 .h6 {
-  @apply text-sm  font-main font-medium text-neutral-50 leading-[120%];
+  @apply text-sm  font-main font-semibold text-neutral-50 leading-[120%];
+}
+
+/* Стилизация активных и не активных кнопок слайдера на Home Page */
+.reviews-slider .swiper-slide-active > div:first-child {
+  @apply transition-all duration-[300ms] bg-neutral-50 ease-in-out;
+}
+
+.reviews-slider .swiper-slide-prev > div:first-child {
+  @apply transition-all duration-[900ms] bg-neutral-700 ease-in-out;
+}
+
+.reviews-slider .swiper-slide-prev h3 {
+  @apply text-neutral-100;
+}
+.reviews-slider .swiper-slide-prev p {
+  @apply text-neutral-300;
+}
+.reviews-slider .swiper-slide-prev span {
+  @apply text-neutral-400;
+}
+
+.reviews-slider .swiper-slide-next > div:first-child {
+  @apply transition-all duration-[900ms] bg-neutral-700 ease-in-out;
+}
+.reviews-slider .swiper-slide-next h3 {
+  @apply text-neutral-100;
+}
+.reviews-slider .swiper-slide-next p {
+  @apply text-neutral-300;
+}
+.reviews-slider .swiper-slide-next span {
+  @apply text-neutral-400;
 }
 
 @tailwind base;
