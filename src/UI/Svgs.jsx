@@ -1,5 +1,3 @@
-import React from "react";
-
 export const ArrowRightIcon = ({ size = 21, stroke = "#E5E7EB" }) => {
   return (
     <svg

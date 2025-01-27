@@ -94,8 +94,8 @@ export function Courses() {
   }
 
   return (
-    <>
-      <div className="flex flex-row items-end justify-between mb-20">
+    <div className="mb-80 container m-auto">
+      <div className="flex flex-row items-end justify-between mb-20 ">
         <CoursesButtons activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
       </div>
 
@@ -176,6 +176,6 @@ export function Courses() {
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }
