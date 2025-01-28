@@ -4,6 +4,7 @@ import bgBlueLines from "../../assets/img/bgBlueLines.jpg";
 import bgBrownLines from "../../assets/img/bgBrownLines.jpg";
 import ArrowRight from "../../assets/img/ArrowRight2.svg";
 import video1 from "../../assets/video/video1.mp4";
+import { createBackgroundStyles } from "../../utility/bgImg";
 
 export default function AdvantagesSection() {
   return (
@@ -23,13 +24,7 @@ export default function AdvantagesSection() {
           <div className="grid grid-cols-1 gap-8 grid-rows-[130px_130px_130px] ">
             {/* 1)  30 дней Верхний синий блок */}
             <div
-              style={{
-                backgroundImage: `url(${bgCircles})`,
-                backgroundRepeat: "no-repeat",
-
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
+              style={createBackgroundStyles(bgCircles)}
               className="relative p-6 overflow-hidden text-white rounded-xl group"
             >
               {/* Передняя сторона */}
@@ -64,13 +59,7 @@ export default function AdvantagesSection() {
             {/* 2) Средний блок (4.85) */}
 
             <div
-              style={{
-                backgroundImage: `url(${bgCircles})`,
-                backgroundRepeat: "no-repeat",
-
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
+              style={createBackgroundStyles(bgCircles)}
               className="relative p-6 overflow-hidden bg-white shadow-sm rounded-xl group"
             >
               {/* Передняя сторона */}
@@ -125,13 +114,7 @@ export default function AdvantagesSection() {
 
             {/* 3) Нижний блок (Lifetime Access) */}
             <div
-              style={{
-                backgroundImage: `url(${bgCircles})`,
-                backgroundRepeat: "no-repeat",
-
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
+              style={createBackgroundStyles(bgCircles)}
               className="relative p-6 overflow-hidden bg-white shadow-sm rounded-xl group"
             >
               {/* Передняя сторона */}
@@ -193,13 +176,7 @@ export default function AdvantagesSection() {
 
             {/* 2) Блок со стрелкой */}
             <div
-              style={{
-                backgroundImage: `url(${bgCircles})`,
-                backgroundRepeat: "no-repeat",
-
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
+              style={createBackgroundStyles(bgCircles)}
               className="relative flex items-center justify-center bg-white shadow-sm rounded-xl"
             >
               {/* Пример простого SVG-стрелки вправо */}

@@ -8,6 +8,7 @@ import bgCircles from "../../assets/img/bgLines.svg";
 import "swiper/css"; // базовые стили
 import "swiper/css/navigation"; // стили для кнопок-стрелок
 import NavigationButtons from "../../UI/NavigationButton";
+import { createBackgroundStyles } from "../../utility/bgImg";
 
 export default function ReviewsSection() {
   // Рефы для кастомных кнопок
@@ -97,12 +98,7 @@ export default function ReviewsSection() {
               <SwiperSlide key={slide.id}>
                 <div
                   className={`relative pt-32 pb-40 mb-32 border rounded-xl shadow-lg px-60 reviews-slider`}
-                  style={{
-                    backgroundImage: `url(${bgCircles})`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }}
+                  style={createBackgroundStyles(bgCircles)}
                 >
                   {/* Header отзыва */}
                   <div className="flex items-start justify-between body-12">

@@ -17,7 +17,7 @@ const slides = [
       {
         id: 1,
         title: "ОТВЕТЫ НА ВСЕ ВОПРОСЫ ПО КУРСАМ ЛИЧНО ОТ АВТОРА",
-        description: "Никаких ответов от кураторов. Ответы только от создателя курса.",
+        description: "Никаких ответов от кураторов. Только от создателя курса.",
         background: "bg-white text-neutral-900",
         badge: "КАЖДЫЙ ДЕНЬ · БЕЗ ВЫХОДНЫХ · ЛИЧНО ·",
         whiteText: false,
@@ -25,7 +25,7 @@ const slides = [
       },
       {
         id: 2,
-        title: "ПОКАЗЫВАЕМ  КАК ДЕЛАТЬ А НЕ РАССКАЗЫВАЕМ",
+        title: "ПОКАЗЫВАЕМ, КАК ДЕЛАТЬ, А НЕ РАССКАЗЫВАЕМ",
         description: "Преподаватель выполняет задачи вместе со студентом.",
         background: "bg-blue-900 text-white",
         backgroundIMG: bgBlueLines,
@@ -39,8 +39,8 @@ const slides = [
     cards: [
       {
         id: 3,
-        title: "СОБИРАЕМ ЕДИНЫЕ СТАНДАРТЫ И ЗАКОНЧЕННЫЕ ПРОЕКТЫ",
-        description: "Большой упор на готовое решение.",
+        title: "СООБЩЕСТВО ЕДИНОМЫШЛЕННИКОВ И ЗАКРЫТЫЙ ЧАТ",
+        description: "Большое комьюнити студентов, всегда готовых поддержать.",
         background: "bg-neutral-900 text-white",
         backgroundIMG: bgBrownLines2,
         whiteText: true,
@@ -48,8 +48,8 @@ const slides = [
       },
       {
         id: 4,
-        title: "КУРСЫ ДЛЯ ДЕЙСТВИЙ А НЕ ДЛЯ СЛОВ",
-        description: "Автор создаёт методику под его предмет.",
+        title: "КУРСЫ ОТ АВТОРА, А НЕ ОТ НАЁМНОГО СОТРУДНИКА",
+        description: "Автор создаёт материал — автор сам его преподаёт.",
         background: "bg-white text-neutral-900",
         whiteText: false,
         label: true,
@@ -63,7 +63,7 @@ export default function SupportSection() {
   const nextButtonRef = useRef(null);
 
   return (
-    <section className="py-100">
+    <section className="pt-50 pb-100">
       <div className="absolute w-full">
         <div className="container m-auto">
           <h2 className="mb-10 font-semibold h1 text-neutral-900 max-w-[450px]">
