@@ -2,6 +2,18 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
+    screens: {
+      sm420: "420px",
+      sm520: "520px",
+      sm: "640px",
+      md: "768px",
+      lg: "1024px",
+      xl: "1280px",
+    },
+    container: {
+      center: true, // Центровка контейнера
+      padding: ".5rem", // Внутренний отступ (40px)
+    },
     extend: {
       fontFamily: {
         main: ["Montserrat", "sans-serif"],
@@ -14,7 +26,7 @@ export default {
       keyframes: {
         marquee: {
           "0%": { transform: "translateX(100%)" },
-          "100%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(-80%)" },
         },
       },
       spacing: {
@@ -75,11 +87,6 @@ export default {
         warning: {},
         error: {},
         success: {},
-
-        container: {
-          center: true, // Центровка контейнера
-          padding: "2.5rem", // Внутренний отступ (40px)
-        },
       },
     },
   },

@@ -4,9 +4,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import bgCircles from "../../assets/img/bgLines.svg";
 
-// Если нужны стили базовые:
-import "swiper/css"; // базовые стили
-import "swiper/css/navigation"; // стили для кнопок-стрелок
 import NavigationButtons from "../../UI/NavigationButton";
 import { createBackgroundStyles } from "../../utility/bgImg";
 
@@ -41,16 +38,16 @@ export default function ReviewsSection() {
   ];
 
   return (
-    <section className="py-[120px]">
-      <div className="px-4 text-center">
+    <section className="pt-[80px] pb-[120px]">
+      <div className="container px-4 text-center md:max-w-none">
         {/* Заголовок и подзаголовок */}
-        <h2 className="mb-20 font-semibold h1 text-neutral-900">
+        <h2 className="mb-20 lg:h1 h2 text-neutral-900 lg:text-neutral-900">
           98% студентов проходивших курсы
           <br />
           оставляют оценку <span className="text-primary-500">5 из 5</span>
         </h2>
 
-        <p className="mb-40 text-gray-600 body">
+        <p className="mb-32 text-gray-600 lg:mb-40 lg:body body-14">
           Тысячи независимых отзывов на{" "}
           <a
             target="_blank"
@@ -84,30 +81,29 @@ export default function ReviewsSection() {
               swiper.params.navigation.nextEl = nextButtonRef.current;
             }}
             centeredSlides={true}
+            loop={true}
             slidesPerView={1.2}
             spaceBetween={30}
             initialSlide={1}
             speed={500}
             breakpoints={{
-              640: { slidesPerView: 1.2 },
-              768: { slidesPerView: 1.4 },
-              1024: { slidesPerView: 1.4 },
+              320: { slidesPerView: 1.0, spaceBetween: 20 }, // Для маленьких экранов (320px)
+              480: { slidesPerView: 1.0, spaceBetween: 15 }, // Чуть больше расстояние (480px)
+              640: { slidesPerView: 1.0, spaceBetween: 20 }, // На 640px увеличиваем немного
+              768: { slidesPerView: 1.4, spaceBetween: 25 }, // Дальше приближаемся к стандартному
+              1024: { slidesPerView: 1.4, spaceBetween: 30 }, // Обычное расстояние
             }}
           >
             {slides.map((slide) => (
               <SwiperSlide key={slide.id}>
                 <div
-                  className={`relative pt-32 pb-40 mb-32 border rounded-xl shadow-lg px-60 reviews-slider`}
+                  className={`relative lg:pt-32 lg:pb-40 mb-32 py-20 px-20 border rounded-xl shadow-lg lg:px-60 reviews-slider`}
                   style={createBackgroundStyles(bgCircles)}
                 >
                   {/* Header отзыва */}
-                  <div className="flex items-start justify-between body-12">
-                    <div>
-                      <h3 className="mb-4 font-semibold h3 text-neutral-900 ">{slide.author}</h3>
-                      <span className="block mb-12 text-gray-400 text-start">{slide.course}</span>
-                    </div>
-                    {/* Звёздочки рейтинга */}
-                    <div className="flex">
+                  <div className="flex flex-col items-start justify-between body-12 sm:flex-row">
+                    {/* Звёздочки рейтинга (Теперь они первые) */}
+                    <div className="flex order-[-1] sm:order-1 mb-20 sm:mb-0">
                       {Array.from({ length: slide.rating }).map((_, index) => (
                         <svg
                           key={index}
@@ -125,9 +121,19 @@ export default function ReviewsSection() {
                         </svg>
                       ))}
                     </div>
+
+                    {/* Имя автора и название курса */}
+                    <div className="order-1 sm:order-[-1]">
+                      <h3 className="mb-4 lg:h3 h4 text-neutral-900 lg:text-neutral-900">
+                        {slide.author}
+                      </h3>
+                      <span className="block mb-12 text-gray-400 text-start">{slide.course}</span>
+                    </div>
                   </div>
                   {/* Текст отзыва */}
-                  <p className="body-18 text-neutral-700 text-start">{slide.text}</p>
+                  <p className="lg:body-18 lg:text-neutral-700 text-start body-14 text-neutral-700">
+                    {slide.text}
+                  </p>
                 </div>
               </SwiperSlide>
             ))}

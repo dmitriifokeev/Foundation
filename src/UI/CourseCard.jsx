@@ -28,7 +28,7 @@ function CourseCard({ course }) {
       </div>
 
       {/* Main content */}
-      <div className="relative w-full h-52">
+      <div className="relative w-full lg:h-52 sm:h-48 md:h-56 h-[210px] sm420:h-[250px] sm520:h-[290px] xl:h-[250px]">
         {/* Background Image */}
         <img
           src={bgImg}
@@ -36,11 +36,11 @@ function CourseCard({ course }) {
           className="absolute inset-0 w-full h-full object-cover origin-center rotate-[-12deg] z-10 rounded-xl"
         />
         {/* Back Details */}
-        <div className="absolute inset-0 pl-32 pt-20 bg-black/40 backdrop-blur-md rounded-xl origin-center rotate-[-12deg] z-20 transition-opacity duration-300 opacity-0 group-hover:opacity-100">
+        <div className="absolute inset-0 pl-32 pt-20 md:pt-32 bg-black/40 backdrop-blur-md rounded-xl origin-center rotate-[-12deg] z-20 transition-opacity duration-300 opacity-0 md:group-hover:opacity-100 xl:pl-40">
           <h5 className="mb-12 text-white h5">Что внутри</h5>
 
           {/* Dynamic list of details with separator */}
-          <ul className="flex flex-wrap items-center gap-4 mb-12">
+          <ul className="flex flex-wrap items-center gap-4 pr-32 mb-12 xl:pr-80 ">
             {Object.entries(detailsDescription).map(([key, value], index, array) => (
               <React.Fragment key={key}>
                 <li className="text-white body-12">{value}</li>

@@ -13,8 +13,8 @@ export default function CoursesButtons({ activeCategory, onCategoryChange }) {
   ];
 
   return (
-    <>
-      <div className="flex gap-3 flex-row flex-wrap max-w-[800px]">
+    <div className="grid justify-between sm:grid-cols-[auto_auto] items-end sm:gap-40 gap-20">
+      <div className="flex flex-row flex-wrap gap-2 lg:gap-3 lg:mb-0 ">
         {categories.map((category) => (
           <Button
             key={category}
@@ -42,8 +42,10 @@ export default function CoursesButtons({ activeCategory, onCategoryChange }) {
           Продвинутый
         </Button>
       </div>
-      <Button iconed>Все курсы</Button>
-    </>
+      <div className="">
+        <Button iconed>Все курсы</Button>
+      </div>
+    </div>
   );
 }
 

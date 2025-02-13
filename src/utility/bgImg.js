@@ -1,11 +1,5 @@
-// utils/backgroundUtils.js
 export function createBackgroundStyles(imageUrl, options = {}) {
-  const {
-    repeat = "no-repeat",
-    size = "cover",
-    position = "center",
-    attachment = "scroll",
-  } = options;
+  const { repeat = "repeat", size = "cover", position = "0 0", attachment = "scroll" } = options;
 
   return {
     backgroundImage: `url(${imageUrl})`,

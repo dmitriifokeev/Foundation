@@ -10,14 +10,14 @@ const Button = ({
   onClick = () => {}, // Значение по умолчанию
 }) => {
   const buttonClasses = classNames(
-    "rounded-lg px-[16px] py-3 text-center font-medium font-main flex items-center gap-2 transition-all duration-200", // Переходы
+    "rounded-md px-[16px] py-3 text-center font-medium font-main flex items-center gap-2 transition-all duration-200 h6 lg:h5 lg:font-medium", // Переходы
     {
       // Основные варианты
-      "bg-primary-500 hover:bg-primary-400 active:bg-primary-600 text-neutral-50":
+      "bg-primary-500 hover:bg-primary-400 active:bg-primary-600 text-neutral-50 ":
         variant === "main" && !isActive,
-      "bg-primary-100 hover:bg-primary-200 active:bg-primary-300 text-primary-600":
+      "bg-primary-100 hover:bg-primary-200 active:bg-primary-300 text-primary-600 ":
         variant === "secondary",
-      "bg-neutral-200 hover:bg-neutral-300 active:bg-neutral-700 active:text-neutral-50 text-neutral-700":
+      "bg-neutral-200 hover:bg-neutral-300 active:bg-neutral-700 active:text-neutral-50 text-neutral-700 lg:text-neutral-600":
         variant === "neutral" && !isActive,
       "bg-neutral-700 text-neutral-50": isActive && variant === "neutral", // Активное состояние для neutral
 

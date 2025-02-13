@@ -1,14 +1,21 @@
 import heroImg from "../../assets/img/hero.jpg";
+import bgCircles from "../../assets/img/bgLines.svg";
+
+import { createBackgroundStyles } from "../../utility/bgImg";
 
 export default function Header() {
   return (
-    <header className="container relative m-auto mb-10 h-550">
-      <img src={heroImg} alt="hero img" className="object-cover w-full h-full " />
-      <div className="absolute inset-0 flex flex-col items-start justify-center p-8 rounded-xl pl-80 bg-gradient-to-r from-black/60 to-transparent text-neutral-50">
-        <h1 className="h1 mb-20 font-main max-w-[650px]">Современное обучение доступное каждому</h1>
-        <p className="body-18 max-w-[600px] leading-[170%] font-light">
-          Обучение с удовольствием, в своем ритме, с гарантированным результатом и по честным ценам
-        </p>
+    <header className="container relative pb-20 m-auto">
+      <div style={createBackgroundStyles(heroImg)} className="rounded-md lg:rounded-xl ">
+        <div className="flex flex-col px-32 py-32 sm:px-40 sm:py-60 text-neutral-50 xl:py-80">
+          <h1 className="lg:h1 mb-12 sm:mb-12 lg:mb-20 font-main lg:max-w-[650px] max-w-[450px] h2 ">
+            Современное обучение доступное каждому
+          </h1>
+          <p className="lg:body-18 body-14 lg:max-w-[600px] max-w-[450px] leading-[170%] font-light">
+            Обучение с удовольствием, в своем ритме, с гарантированным результатом и по честным
+            ценам
+          </p>
+        </div>
       </div>
     </header>
   );

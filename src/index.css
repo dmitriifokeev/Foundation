@@ -1,5 +1,10 @@
 /* Стили для Типографики*/
 
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+@import "swiper/css/effect-fade";
+
 @layer components {
   .body-12 {
     @apply text-[12px]  font-secondary font-normal text-neutral-50 leading-[150%];
@@ -19,28 +24,27 @@
   .body-20 {
     @apply text-[20px] font-secondary  font-normal text-neutral-50 leading-[150%];
   }
-}
+  .h1 {
+    @apply text-5xl font-main font-semibold text-neutral-50 leading-[120%];
+  }
 
-.h1 {
-  @apply text-5xl font-main font-semibold text-neutral-50 leading-[120%];
-}
+  .h2 {
+    @apply text-[32px] font-main font-semibold text-neutral-50 leading-[120%];
+  }
 
-.h2 {
-  @apply text-[32px] font-main font-semibold text-neutral-50 leading-[120%];
-}
+  .h3 {
+    @apply text-2xl font-main font-semibold text-neutral-50 leading-[120%];
+  }
 
-.h3 {
-  @apply text-2xl font-main font-semibold text-neutral-50 leading-[120%];
-}
-
-.h4 {
-  @apply text-[20px] font-main font-semibold text-neutral-50 leading-[120%];
-}
-.h5 {
-  @apply text-[16px] font-main font-semibold text-neutral-50 leading-[120%];
-}
-.h6 {
-  @apply text-sm  font-main font-semibold text-neutral-50 leading-[120%];
+  .h4 {
+    @apply text-[20px] font-main font-semibold text-neutral-50 leading-[120%];
+  }
+  .h5 {
+    @apply text-[16px] font-main font-semibold text-neutral-50 leading-[120%];
+  }
+  .h6 {
+    @apply text-sm  font-main font-semibold text-neutral-50 leading-[120%];
+  }
 }
 
 /* Стилизация активных и не активных кнопок слайдера на Home Page */
@@ -73,6 +77,52 @@
 }
 .reviews-slider .swiper-slide-next span {
   @apply text-neutral-400;
+}
+
+/* Обёртка пагинации */
+.custom-swiper-pagination {
+  @apply flex p-[4px] bg-neutral-100 rounded-full justify-between h5 text-neutral-700;
+}
+
+.custom-pagination-bullet {
+  @apply text-neutral-700;
+}
+
+/* Буллеты */
+.custom-swiper-pagination > .swiper-pagination-bullet {
+  @apply font-main font-semibold flex flex-row items-center justify-center w-full h-full py-[8px] lg:text-neutral-700 transition duration-300 bg-gray-100 rounded-full cursor-pointer opacity-100;
+}
+
+/* Активный буллет */
+.custom-swiper-pagination > .swiper-pagination-bullet-active {
+  @apply cursor-default bg-neutral-800 text-neutral-50 h6 !important;
+}
+
+/* Активный буллет Hover */
+.custom-swiper-pagination > .swiper-pagination-bullet:hover {
+  @apply bg-neutral-800 text-neutral-50 h6 !important;
+}
+
+/* Буллеты Hover */
+.custom-swiper-pagination > .swiper-pagination-bullet:hover {
+  @apply bg-gray-300 h5;
+}
+
+@screen lg {
+  .custom-swiper-pagination > .swiper-pagination-bullet-active {
+    @apply h5 text-neutral-700;
+  }
+}
+
+@keyframes bg-scroll {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    /* Сдвиг на полную высоту изображения. Если изображение повторяется, 
+       то -100% обеспечит плавный цикл. При необходимости можно подогнать значение */
+    background-position: 0 -750%;
+  }
 }
 
 @tailwind base;

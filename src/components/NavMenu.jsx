@@ -3,9 +3,12 @@ import logo from "../assets/img/logo.svg";
 
 function NavMenu() {
   return (
-    <nav className="mb-20 container m-auto px-32 m-auto h-60 bg-slate-700 flex items-center justify-between rounded-lg">
-      <img src={logo} alt="Logo" className="w-108 " />
-      <Hamburger />
+    <nav className="container ">
+      <div className="flex items-center justify-between px-32 m-auto mb-20 rounded-lg h-60 bg-slate-700 ">
+        <img src={logo} alt="Logo" className="w-108 " />
+
+        <Hamburger />
+      </div>
     </nav>
   );
 }

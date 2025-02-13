@@ -1,8 +1,7 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { useRef } from "react";
-import "swiper/css";
-import "swiper/css/navigation";
+
 import Button from "../../UI/Button";
 import NavigationButtons from "../../UI/NavigationButton";
 import bgBlueLines from "../../assets/img/bgBlueLines.jpg";
@@ -63,22 +62,25 @@ export default function SupportSection() {
   const nextButtonRef = useRef(null);
 
   return (
-    <section className="pt-50 pb-100">
-      <div className="absolute w-full">
-        <div className="container m-auto">
-          <h2 className="mb-10 font-semibold h1 text-neutral-900 max-w-[450px]">
-            Поддерживаем и помогаем <span className="text-primary-500">лично</span>
+    <section className="relative overflow-hidden pt-50 pb-100">
+      {/* Левая часть */}
+      <div className="container m-auto relative  mb-[40px] lg:mb-0 ">
+        <div className="flex justify-between align-middle lg:absolute lg:block">
+          <h2 className="lg:mb-10 lg:h1 h2 text-neutral-900 lg:max-w-[450px] lg:text-neutral-900">
+            Поддерживаем <br /> и помогаем <span className="text-primary-500">лично</span>
           </h2>
-          <Button iconed>Все курсы</Button>
+          <div className="items-end hidden sm:flex">
+            <Button iconed>Все курсы</Button>
+          </div>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-10 ">
-        {/* Левая часть */}
 
+      {/* Правая часть */}
+      <div className=" grid grid-cols-1 m-auto lg:gap-10 lg:grid-cols-[40%_60%] xl:grid-cols-[35%_65%] ">
         <div className=""></div>
 
         {/* Правая часть (слайдер) */}
-        <div className="relative col-span-1 ">
+        <div className="container relative ">
           <Swiper
             modules={[Navigation]}
             navigation={{
@@ -94,32 +96,36 @@ export default function SupportSection() {
           >
             {slides.map((slide) => (
               <SwiperSlide key={slide.id}>
-                <div className="grid grid-cols-1 gap-2 grid-rows-[230px_230px]  rounded-lg mb-[32px] ">
+                <div className="grid grid-cols-1 gap-2 grid-rows-[230px_230px]  rounded-lg mb-[32px]  ">
                   {slide.cards.map((card) => (
                     <div
                       style={
                         card.backgroundIMG ? createBackgroundStyles(card.backgroundIMG) : undefined
                       }
                       key={card.id}
-                      className={`pt-40 pl-32 pr-[120px] border rounded-xl shadow-md ${card.background} relative overflow-hidden`}
+                      className={`  lg:pr-[120px] pt-20 pl-12 pr-40 sm:pt-20  sm:pl-20   border rounded-xl shadow-md ${card.background} relative overflow-hidden`}
                     >
                       <h3
                         className={`mb-12 ${
-                          card.whiteText ? "text-neutral-50" : "text-neutral-900"
-                        } h3`}
+                          card.whiteText
+                            ? "text-neutral-50"
+                            : "text-neutral-900 lg:text-neutral-900"
+                        } lg:h3 h4 z-20  relative max-w-[300px]`}
                       >
                         {card.title}
                       </h3>
                       <p
                         className={`${
-                          card.whiteText ? "text-neutral-50" : "text-neutral-600"
-                        } body-18`}
+                          card.whiteText
+                            ? "text-neutral-50 lg:text-neutral-50"
+                            : "text-neutral-600 lg:text-neutral-600"
+                        } lg:body-18 body-14  relative z-20 max-w-[250px] lg:max-w-[320px]`}
                       >
                         {card.description}
                       </p>
                       {card.badge && (
-                        <div className="absolute bottom-[50px] right-[-100px] h-[35px] overflow-hidden transform bg-secondary-400 rounded-lg rotate-[-55deg] flex items-center ">
-                          <p className="whitespace-nowrap animate-marquee text-neutral-50 ">
+                        <div className="absolute bottom-[50px] sm:right-[-100px] h-[35px]  right-[-120px] overflow-hidden transform bg-secondary-400 rounded-lg rotate-[-55deg] flex items-center ">
+                          <p className="whitespace-nowrap animate-marquee text-neutral-50">
                             КАЖДЫЙ ДЕНЬ · ЛИЧНО · БЕЗ ВЫХОДНЫХ
                           </p>
                         </div>
@@ -128,7 +134,7 @@ export default function SupportSection() {
                         <img
                           src={bigStar}
                           alt="зеленая звезда"
-                          className="absolute bottom-[-100px] right-[-100px]"
+                          className="absolute bottom-[-100px] right-[-100px] z-10"
                         />
                       )}
                     </div>
