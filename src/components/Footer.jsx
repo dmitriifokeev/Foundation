@@ -4,8 +4,8 @@ import telegramLogo from "../assets/img/telegramLogo.svg";
 
 export default function Footer() {
   return (
-    <footer className="pb-20 text-white pt-60">
-      <div className="container grid grid-cols-[2fr_1fr]  gap-8 mx-auto ">
+    <footer className="pt-20 pb-20 text-white">
+      <div className="container grid grid-cols-[2fr_1fr]  gap-8 mx-auto px-0">
         {/* Левая колонка */}
         <div className="grid sm:grid-cols-[2fr_1fr] grid-cols-[1fr] sm:p-32 p-20  rounded-lg bg-neutral-700 ">
           <div className="flex flex-col justify-between">

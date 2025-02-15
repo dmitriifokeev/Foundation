@@ -4,10 +4,10 @@ import Button from "../UI/Button";
 
 function BannerNewProfession() {
   return (
-    <section className="flex flex-col items-center pt-40 text-center pb-60 lg:py-100">
+    <section className="flex flex-col items-center pt-40 overflow-hidden text-center pb-60 lg:py-100">
       {/* Фоновая иконка (левая) */}
 
-      <div className="relative">
+      <div className="relative ">
         <img
           className="absolute sm:left-[-80px]   lg:top-[-60px] top-[-40px] left-[-40px] lg:max-w-[30%] max-w-[30%]"
           src={hatEducation}

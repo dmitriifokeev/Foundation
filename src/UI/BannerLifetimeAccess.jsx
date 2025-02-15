@@ -2,7 +2,7 @@ import infiniti from "../assets/img/infinityLable.png";
 
 function BannerLifetimeAccess() {
   return (
-    <section className="container pt-20 m-auto pb-[140px]">
+    <section className="container  m-auto sm:pb-[100px] pb-60">
       <div className="relative grid sm:grid-cols-[1fr_2fr] xl:grid-cols-[2fr_3fr] px-20 sm:px-0 py-20 sm:py-32 overflow-hidden bg-teal-800 rounded-xl">
         <div></div>
         <img

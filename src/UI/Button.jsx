@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { ButtonArrowIcon } from "./Svgs";
+import iconArrowBtnUpRight from "../assets/img/buttonsSvg/iconArrowBtnUpRight.svg";
 
 const Button = ({
   variant = "main", // Значение по умолчанию
@@ -38,7 +39,7 @@ const Button = ({
       {children}
       {iconed && (
         <span className="transition-all duration-200">
-          <ButtonArrowIcon className={iconColor} size={14} />
+          <img src={iconArrowBtnUpRight} alt="" />
         </span>
       )}
     </button>

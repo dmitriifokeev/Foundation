@@ -1,14 +1,17 @@
-// Импорты из Swiper
-import { useRef } from "react";
+// ReviewsSection.jsx
+import { useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import bgCircles from "../../assets/img/bgLines.svg";
 
-import NavigationButtons from "../../UI/NavigationButton";
+import NavigationButton from "../../UI/NavigationButton";
 import { createBackgroundStyles } from "../../utility/bgImg";
+import useSwiperNavigation from "../../hooks/useSwiperNavigationBtn";
 
 export default function ReviewsSection() {
-  // Рефы для кастомных кнопок
+  // Реф для экземпляра Swiper
+  const swiperRef = useRef(null);
+  // Рефы для кастомных кнопок навигации
   const prevButtonRef = useRef(null);
   const nextButtonRef = useRef(null);
 
@@ -36,6 +39,9 @@ export default function ReviewsSection() {
       rating: 5,
     },
   ];
+
+  // Подключаем хук для обновления навигации
+  useSwiperNavigation(swiperRef, prevButtonRef, nextButtonRef);
 
   return (
     <section className="pt-[80px] pb-[120px]">
@@ -72,13 +78,14 @@ export default function ReviewsSection() {
         <div className="relative reviews-slider">
           <Swiper
             modules={[Navigation]}
+            // Сохраняем экземпляр Swiper в swiperRef
+            onSwiper={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            // Первоначальное назначение навигации (может быть null до монтирования кнопок)
             navigation={{
               prevEl: prevButtonRef.current,
               nextEl: nextButtonRef.current,
-            }}
-            onBeforeInit={(swiper) => {
-              swiper.params.navigation.prevEl = prevButtonRef.current;
-              swiper.params.navigation.nextEl = nextButtonRef.current;
             }}
             centeredSlides={true}
             loop={true}
@@ -87,11 +94,11 @@ export default function ReviewsSection() {
             initialSlide={1}
             speed={500}
             breakpoints={{
-              320: { slidesPerView: 1.0, spaceBetween: 20 }, // Для маленьких экранов (320px)
-              480: { slidesPerView: 1.0, spaceBetween: 15 }, // Чуть больше расстояние (480px)
-              640: { slidesPerView: 1.0, spaceBetween: 20 }, // На 640px увеличиваем немного
-              768: { slidesPerView: 1.4, spaceBetween: 25 }, // Дальше приближаемся к стандартному
-              1024: { slidesPerView: 1.4, spaceBetween: 30 }, // Обычное расстояние
+              320: { slidesPerView: 1.0, spaceBetween: 20 },
+              480: { slidesPerView: 1.0, spaceBetween: 15 },
+              640: { slidesPerView: 1.0, spaceBetween: 20 },
+              768: { slidesPerView: 1.4, spaceBetween: 25 },
+              1024: { slidesPerView: 1.4, spaceBetween: 30 },
             }}
           >
             {slides.map((slide) => (
@@ -102,7 +109,7 @@ export default function ReviewsSection() {
                 >
                   {/* Header отзыва */}
                   <div className="flex flex-col items-start justify-between body-12 sm:flex-row">
-                    {/* Звёздочки рейтинга (Теперь они первые) */}
+                    {/* Звёздочки рейтинга */}
                     <div className="flex order-[-1] sm:order-1 mb-20 sm:mb-0">
                       {Array.from({ length: slide.rating }).map((_, index) => (
                         <svg
@@ -122,7 +129,7 @@ export default function ReviewsSection() {
                       ))}
                     </div>
 
-                    {/* Имя автора и название курса */}
+                    {/* Информация об авторе */}
                     <div className="order-1 sm:order-[-1]">
                       <h3 className="mb-4 lg:h3 h4 text-neutral-900 lg:text-neutral-900">
                         {slide.author}
@@ -139,9 +146,8 @@ export default function ReviewsSection() {
             ))}
           </Swiper>
 
-          {/* Кастомные кнопки */}
-
-          <NavigationButtons prevButtonRef={prevButtonRef} nextButtonRef={nextButtonRef} />
+          {/* Кастомные кнопки навигации */}
+          <NavigationButton prevButtonRef={prevButtonRef} nextButtonRef={nextButtonRef} />
         </div>
       </div>
     </section>

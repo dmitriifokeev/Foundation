@@ -4,7 +4,7 @@ import bgCircles from "../assets/img/bgLines.svg";
 
 function BannerEnjoyEducation() {
   return (
-    <div className="container pt-20 m-auto lg:pb-100 pb-60">
+    <div className="container pt-20 pb-40 m-auto lg:pb-100">
       <div className="lg:py-[40px] py-32 lg:rounded-xl rounded-md text-center flex flex-col items-center relative overflow-hidden">
         {/* Обёртка для фонового элемента с поворотом */}
         <div className="absolute inset-0 overflow-hidden">

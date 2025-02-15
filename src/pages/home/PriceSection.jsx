@@ -5,7 +5,7 @@ import { createBackgroundStyles } from "../../utility/bgImg";
 
 function PriceSection() {
   return (
-    <section className="pt-20 pb-60">
+    <section className="pt-20 pb-0 lg:pb-40">
       <div className="container grid lg:grid-cols-[5fr_6fr] m-auto lg:grid-rows-2">
         {/* Левая часть */}
         <div className="order-1 mb-20 lg:col-start-1 lg:row-start-1 lg:mb-0">

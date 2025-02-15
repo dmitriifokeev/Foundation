@@ -14,7 +14,7 @@ function CourseCard({ course }) {
       : "bg-primary-100 text-primary-700";
 
   return (
-    <div className="relative pb-20 overflow-hidden bg-neutral-700 rounded-xl group">
+    <div className="relative overflow-hidden bg-neutral-700 rounded-xl group">
       {/* Label */}
       <div className="px-16 pt-8 mb-8">
         <div className="p-16 bg-neutral-50 rounded-xl">
@@ -28,12 +28,12 @@ function CourseCard({ course }) {
       </div>
 
       {/* Main content */}
-      <div className="relative w-full lg:h-52 sm:h-48 md:h-56 h-[210px] sm420:h-[250px] sm520:h-[290px] xl:h-[250px]">
+      <div className="relative w-full lg:h-52 sm:h-[192px] md:h-56 h-[210px] sm420:h-[250px] sm520:h-[290px] xl:h-[250px]">
         {/* Background Image */}
         <img
           src={bgImg}
           alt={title}
-          className="absolute inset-0 w-full h-full object-cover origin-center rotate-[-12deg] z-10 rounded-xl"
+          className="absolute inset-0 w-full  object-cover origin-center rotate-[-12deg] z-10 rounded-xl"
         />
         {/* Back Details */}
         <div className="absolute inset-0 pl-32 pt-20 md:pt-32 bg-black/40 backdrop-blur-md rounded-xl origin-center rotate-[-12deg] z-20 transition-opacity duration-300 opacity-0 md:group-hover:opacity-100 xl:pl-40">

@@ -31,7 +31,7 @@ const RoundButton = React.forwardRef(
 
     return (
       <button ref={ref} className={buttonClasses} onClick={onClick} {...props}>
-        {icon && <span className="flex items-center justify-center">{icon}</span>}
+        {icon && <img src={icon} alt="arrow icon" />}
       </button>
     );
   }

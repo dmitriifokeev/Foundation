@@ -13,8 +13,8 @@ export default function CoursesButtons({ activeCategory, onCategoryChange }) {
   ];
 
   return (
-    <div className="grid justify-between sm:grid-cols-[auto_auto] items-end sm:gap-40 gap-20">
-      <div className="flex flex-row flex-wrap gap-2 lg:gap-3 lg:mb-0 ">
+    <div className="grid justify-between sm:grid-cols-[auto_auto] items-end sm:gap-40 gap-20  ">
+      <div className="flex flex-row flex-wrap gap-2 lg:gap-3 ">
         {categories.map((category) => (
           <Button
             key={category}
