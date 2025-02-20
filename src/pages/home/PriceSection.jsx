@@ -40,7 +40,7 @@ function PriceSection() {
             <p className="body-12 text-neutral-600 max-w-[55%] relative z-20">
               Вопросы по темам курса лично автору
             </p>
-            <div className="text-[10px] absolute lg:top-[16px] lg:right-[-74px] right-[-100px] bg-neutral-700 rounded-lg rotate-[-20deg] sm:max-w-[250px] max-w-[210px]  lg:pl-20 lg:pt-20  h-[200px] font-light pl-12 pt-12 top-[10px] pr-[90px] sm:right-[-30px] sm:pl-20 sm:pr-60">
+            <div className="body-10 absolute lg:top-[16px] lg:right-[-74px] right-[-100px] bg-neutral-700 rounded-lg rotate-[-20deg] sm:max-w-[250px] max-w-[210px]  lg:pl-20 lg:pt-20  h-[200px] font-light pl-12 pt-12 top-[10px] pr-[90px] sm:right-[-30px] sm:pl-20 sm:pr-60">
               <p className="max-w-[170px] text-neutral-300 ">
                 Автор отвечает на все вопросы по темам курса ежедневно, без выходных.
               </p>
@@ -77,7 +77,7 @@ function PriceSection() {
             <p className="body-12 text-neutral-600 max-w-[57%] relative z-20">
               100% возврат средств в течение 30 дней, если вы прошли менее 35% курса.
             </p>
-            <div className="text-[10px] absolute lg:top-[16px] lg:right-[-74px] right-[-50px] bg-neutral-700 rounded-lg rotate-[-20deg] sm:max-w-[250px] sm:pl-20 sm:pr-60 max-w-[220px] sm:right-[-40px] lg:pl-20 lg:pt-20  h-[200px] font-light pl-12 pt-12 top-20">
+            <div className="body-10 absolute lg:top-[16px] lg:right-[-74px] right-[-50px] bg-neutral-700 rounded-lg rotate-[-20deg] sm:max-w-[250px] sm:pl-20 sm:pr-60 max-w-[220px] sm:right-[-40px] lg:pl-20 lg:pt-20  h-[200px] font-light pl-12 pt-12 top-20">
               <p className="max-w-[170px] text-neutral-300 pr-60 sm:pr-0">
                 Без скрытых условий, общения с оператором, письменных заявлений и опросов.
               </p>

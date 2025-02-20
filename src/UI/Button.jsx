@@ -11,7 +11,7 @@ const Button = ({
   onClick = () => {}, // Значение по умолчанию
 }) => {
   const buttonClasses = classNames(
-    "rounded-md px-[16px] py-3 text-center font-medium font-main flex items-center gap-2 transition-all duration-200 h6 lg:h5 lg:font-medium", // Переходы
+    "rounded-md px-[16px] py-12 text-center font-medium font-main flex items-center gap-2 transition-all duration-200 h7 lg:h6 lg:font-medium", // Переходы
     {
       // Основные варианты
       "bg-primary-500 hover:bg-primary-400 active:bg-primary-600 text-neutral-50 ":
@@ -39,7 +39,7 @@ const Button = ({
       {children}
       {iconed && (
         <span className="transition-all duration-200">
-          <img src={iconArrowBtnUpRight} alt="" />
+          <img src={iconArrowBtnUpRight} alt="icon arrow" />
         </span>
       )}
     </button>

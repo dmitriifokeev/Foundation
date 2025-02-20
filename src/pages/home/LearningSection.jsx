@@ -2,13 +2,13 @@ import woman from "../../assets/img/woman.jpg";
 
 export default function LearningSection() {
   return (
-    <section className="container m-auto pt-60 lg:pb-120 pb-80">
+    <section className="container pt-40 pb-40 m-auto lg:pb-80">
       <h2 className="mb-32 text-neutral-900 lg:h1 lg:mb-60 h2 lg:text-neutral-900">
         Учитесь так, как <br /> удобно именно Вам
       </h2>
 
-      {/* Левая часть - Текст */}
       <div className="flex flex-col items-center gap-32 lg:flex-row">
+        {/* Левая часть - Текст */}
         <div className="flex-1 ">
           <div className="space-y-20">
             {/* Блок 1 */}
@@ -59,7 +59,7 @@ export default function LearningSection() {
             <img
               src={woman}
               alt="Девушка с ноутбуком"
-              className=" rounded-lg max-w-[355px] z-20 relative mt-[-20px] self-end"
+              className=" rounded-lg sm:max-w-[355px] max-w-[300px] z-20 relative mt-[-20px] self-end"
             />
           </div>
         </div>

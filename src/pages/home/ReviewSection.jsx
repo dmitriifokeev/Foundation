@@ -1,5 +1,5 @@
 // ReviewsSection.jsx
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import bgCircles from "../../assets/img/bgLines.svg";
@@ -7,44 +7,75 @@ import bgCircles from "../../assets/img/bgLines.svg";
 import NavigationButton from "../../UI/NavigationButton";
 import { createBackgroundStyles } from "../../utility/bgImg";
 import useSwiperNavigation from "../../hooks/useSwiperNavigationBtn";
+import coursesData from "../../data/coursesData";
+import { useState } from "react";
+import { useEffect } from "react";
 
-export default function ReviewsSection() {
+export default function ReviewsSection({ allReviews, currentCourse }) {
+  const [reviews, setReviews] = useState([]);
+
   // Реф для экземпляра Swiper
   const swiperRef = useRef(null);
   // Рефы для кастомных кнопок навигации
   const prevButtonRef = useRef(null);
   const nextButtonRef = useRef(null);
 
-  // Пример данных отзывов
-  const slides = [
-    {
-      id: 1,
-      author: "Мария Суворова",
-      course: "Курс по WordPress с нуля",
-      text: "Замечательный курс, уже третий, который прохожу у Дмитрия. Как всегда, очень доступное и понятное изложение, прекрасная логика и удобная подача материала со всеми нужными ссылками, сервисами, презентациями. Объем материла тщательно отфильтрован, ничего лишнего.",
-      rating: 5,
-    },
-    {
-      id: 2,
-      author: "Иван Петров",
-      course: "React для начинающих",
-      text: "Замечательный курс, уже третий, который прохожу у Дмитрия. Как всегда, очень доступное и понятное изложение, прекрасная логика и удобная подача материала со всеми нужными ссылками, сервисами, презентациями. Объем материла тщательно отфильтрован, ничего лишнего.",
-      rating: 5,
-    },
-    {
-      id: 3,
-      author: "Ольга Смирнова",
-      course: "JavaScript c нуля",
-      text: "Замечательный курс, уже третий, который прохожу у Дмитрия. Как всегда, очень доступное и понятное изложение, прекрасная логика и удобная подача материала со всеми нужными ссылками, сервисами, презентациями. Объем материла тщательно отфильтрован, ничего лишнего.",
-      rating: 5,
-    },
-  ];
+  const {
+    slug,
+    hero: {
+      title,
+      heroSubtitle,
+      tag,
+      type,
+      lessonsNum, // возможно, undefined, если не передано
+      hoursNum, // возможно, undefined
+    } = {},
+    bgImg = "",
+    difficulty = 1,
+    details: {
+      lessons,
+      hours,
+      duration,
+      practices,
+      tests,
+      projects,
+      price,
+      oldPrice,
+      videoAdLink,
+      about: {
+        title: aboutTitle, // переименовываем, чтобы не пересекаться с hero.title
+        boxImgTitle,
+        text: aboutText,
+      } = {},
+      salary: { title: salaryTitle, text: salaryText, note: salaryNote, salaryLevels } = {},
+      skills: { topics, tools } = {},
+      reviews: { totalCount, ratings, links, list } = {},
+    } = {},
+  } = currentCourse || {};
+
+  useEffect(() => {
+    if (allReviews) {
+      function collectFirstReviews(data) {
+        return Object.values(data)
+          .flatMap((category) =>
+            category.flatMap((course) =>
+              course.details?.reviews?.list?.length ? course.details.reviews.list[0] : null
+            )
+          )
+          .filter((review) => review !== null);
+      }
+
+      setReviews(collectFirstReviews(coursesData));
+    } else {
+      setReviews(list);
+    }
+  }, [allReviews, list]); // ✅ Запускаем `useEffect` при изменении `allReviews`
 
   // Подключаем хук для обновления навигации
   useSwiperNavigation(swiperRef, prevButtonRef, nextButtonRef);
 
   return (
-    <section className="pt-[80px] pb-[120px]">
+    <section className="pt-[80px] md:pb-[120px] pb-80">
       <div className="container px-4 text-center md:max-w-none">
         {/* Заголовок и подзаголовок */}
         <h2 className="mb-20 lg:h1 h2 text-neutral-900 lg:text-neutral-900">
@@ -101,7 +132,7 @@ export default function ReviewsSection() {
               1024: { slidesPerView: 1.4, spaceBetween: 30 },
             }}
           >
-            {slides.map((slide) => (
+            {reviews.map((slide) => (
               <SwiperSlide key={slide.id}>
                 <div
                   className={`relative lg:pt-32 lg:pb-40 mb-32 py-20 px-20 border rounded-xl shadow-lg lg:px-60 reviews-slider`}
@@ -131,8 +162,8 @@ export default function ReviewsSection() {
 
                     {/* Информация об авторе */}
                     <div className="order-1 sm:order-[-1]">
-                      <h3 className="mb-4 lg:h3 h4 text-neutral-900 lg:text-neutral-900">
-                        {slide.author}
+                      <h3 className="mb-4 text-left lg:h3 h4 text-neutral-900 lg:text-neutral-900">
+                        {slide.name}
                       </h3>
                       <span className="block mb-12 text-gray-400 text-start">{slide.course}</span>
                     </div>

@@ -20,7 +20,7 @@ function Home() {
       <Header />
       <Courses />
       <AdvantagesSection />
-      <ReviewsSection />
+      <ReviewsSection allReviews={true} />
       <SupportSection />
       <BannerLifetimeAccess />
       <PriceSection />

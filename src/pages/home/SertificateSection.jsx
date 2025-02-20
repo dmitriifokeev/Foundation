@@ -4,7 +4,7 @@ import sertificateWhite from "../../assets/img/sertificateWhite.svg";
 function SertificateSection() {
   return (
     <section>
-      <div className="container m-auto pt-60">
+      <div className="container pt-40 m-auto">
         <h2 className="mb-32 lg:mb-0 lg:h1 h2 text-neutral-900 lg:text-neutral-900">
           Сертификат по <br /> окончанию курса
         </h2>

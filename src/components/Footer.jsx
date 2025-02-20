@@ -5,7 +5,7 @@ import telegramLogo from "../assets/img/telegramLogo.svg";
 export default function Footer() {
   return (
     <footer className="pt-20 pb-20 text-white">
-      <div className="container grid grid-cols-[2fr_1fr]  gap-8 mx-auto px-0">
+      <div className="container grid grid-cols-[2fr_1fr]  gap-8 mx-auto ">
         {/* Левая колонка */}
         <div className="grid sm:grid-cols-[2fr_1fr] grid-cols-[1fr] sm:p-32 p-20  rounded-lg bg-neutral-700 ">
           <div className="flex flex-col justify-between">
@@ -15,7 +15,7 @@ export default function Footer() {
               className="lg:w-[180px] w-[100px] cursor-pointer mb-20 sm:mb-0"
             />
 
-            <div className="lg:body-12 text-[10px] text-neutral-300 mb-20 sm:mb-0">
+            <div className=" text-[10px] text-neutral-400 mb-20 sm:mb-0 ">
               <p className="mb-4 cursor-pointer hover:underline">Политика конфиденциальности</p>
               <p className="">Все права защищены</p>
             </div>
@@ -25,9 +25,9 @@ export default function Footer() {
             <img
               src={arrowFooter}
               alt="Arrow Icon"
-              className="lg:w-[130px] w-60 mb-40 self-end hidden sm:block"
+              className="lg:w-[80px] w-30 mb-32 self-end hidden sm:block"
             />
-            <div className="sm:self-end">
+            <div className="sm:self-end text-[10px] text-neutral-400">
               <p>ИП Фокеев Дмитрий Сергеевич</p>
               <p>ИНН: 7806268916</p>
               <p className="mb-2">ОГРНИП: 3247803004020</p>
@@ -43,8 +43,8 @@ export default function Footer() {
 
         {/* Правая колонка (Телеграм) */}
         <div className="relative flex flex-col items-center justify-start p-20 rounded-lg sm:pt-40 bg-neutral-700 sm:p-0">
-          <h3 className="mb-8 lg:h4 sm:h5 h6 ">Наш телеграм канал</h3>
-          <p className=" lg:body-12 text-[10px] mb-20 lg:mb-60">Скидки новинки обучение</p>
+          <h3 className="mb-8 lg:h4 sm:h5 h6 text-neutral-200">Наш телеграм канал</h3>
+          <p className=" lg:body-12 text-[10px] mb-20 lg:mb-40 ">Скидки новинки обучение</p>
           <img
             src={telegramLogo}
             alt="Telegram"

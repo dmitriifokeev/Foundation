@@ -62,7 +62,7 @@ export default function LearningProcessSection() {
   }, []);
 
   return (
-    <section className="pt-100 sm:pb-60">
+    <section className="pt-20 sm:pb-60 ">
       <div className="container m-auto">
         {/* Заголовок */}
         <h2 className="mb-32 lg:h1 h2 text-neutral-900 lg:text-neutral-900">
@@ -148,10 +148,9 @@ export default function LearningProcessSection() {
                         {step.contentType === "iframe" && (
                           <div className="relative w-full overflow-hidden aspect-video rounded-xl">
                             <iframe
+                              title="vimeo-player"
+                              src="https://player.vimeo.com/video/1051233466?h=e31772d8a6"
                               className="absolute inset-0 w-full h-full"
-                              src="https://www.youtube.com/embed/6XOXMuN3Xwo?si=SW_SejIKRRzBGo7n"
-                              title="YouTube video player"
-                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             ></iframe>
                           </div>
                         )}

@@ -6,6 +6,9 @@
 @import "swiper/css/effect-fade";
 
 @layer components {
+  .body-10 {
+    @apply text-[10px]  font-secondary font-normal text-neutral-50 leading-[150%];
+  }
   .body-12 {
     @apply text-[12px]  font-secondary font-normal text-neutral-50 leading-[150%];
   }
@@ -44,6 +47,9 @@
   }
   .h6 {
     @apply text-sm  font-main font-semibold text-neutral-50 leading-[120%];
+  }
+  .h7 {
+    @apply text-[12px]  font-main font-semibold text-neutral-50 leading-[120%];
   }
 }
 

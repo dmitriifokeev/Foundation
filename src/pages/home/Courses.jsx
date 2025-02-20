@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import iconLeftSliderBtnWhite from "../../assets/img/buttonsSvg/iconLeftSliderBtnWhite.svg";
@@ -6,47 +6,50 @@ import iconRightSliderBtnWhite from "../../assets/img/buttonsSvg/iconRightSlider
 import "swiper/css"; // базовые стили Swiper
 
 import coursesData from "../../data/coursesData";
-
 import CourseCard from "../../UI/CourseCard";
 import CoursesButtons from "./CoursesButtons";
 import ProgramCard from "../../UI/ProgramCard";
 
-export function Courses() {
-  // Состояния для активной категории и отфильтрованных данных
-  const [activeCategory, setActiveCategory] = useState("webDevelopment");
-  const [filteredCourses, setFilteredCourses] = useState(coursesData.webDevelopment || []);
+import { v4 as uuidv4 } from "uuid";
+
+export function Courses({ pt, staticCategory, showButtons = true, categoryData, forCoursesPage }) {
+  // Если передан staticCategory, то используем его, иначе значение по умолчанию
+  const initialCategory = staticCategory || "webDevelopment";
+
+  const [activeCategory, setActiveCategory] = useState(initialCategory);
+  const [filteredCourses, setFilteredCourses] = useState(coursesData[initialCategory] || []);
   const [filteredProgramms, setFilteredProgramms] = useState(() =>
     coursesData.programms
-      ? coursesData.programms.filter((prog) => prog.group === "webDevelopment")
+      ? coursesData.programms.filter((prog) => prog.group === initialCategory)
       : []
   );
 
-  // Фильтрация курсов и программ при выборе категории
+  // Фильтрация курсов и программ по выбранной категории
   function filterCoursesAndPrograms(category) {
     let newCourses = [];
     let newProgramms = [];
 
     if (category === "fromZero") {
-      // Курсы для начинающих (levelDifficulties = 1)
+      // Курсы для начинающих (difficulty === 1)
       const keysWithoutProgramms = Object.keys(coursesData).filter((k) => k !== "programms");
       newCourses = keysWithoutProgramms
         .map((key) => coursesData[key])
         .flat()
-        .filter((course) => course.levelDifficulties === 1);
+        .filter((course) => course.difficulty === 1);
       newProgramms = coursesData.programms || [];
     } else if (category === "proLevel") {
-      // Курсы для продвинутых (levelDifficulties = 2)
+      // Курсы для продвинутых (difficulty === 2)
       const keysWithoutProgramms = Object.keys(coursesData).filter((k) => k !== "programms");
       newCourses = keysWithoutProgramms
         .map((key) => coursesData[key])
         .flat()
-        .filter((course) => course.levelDifficulties === 2);
+        .filter((course) => course.difficulty === 2);
       newProgramms = [];
     } else if (category === "programms") {
       newCourses = [];
       newProgramms = coursesData.programms || [];
     } else {
-      // Обычная категория
+      // Обычная категория (например, "webDevelopment", "CMS", "webDesign" и т.д.)
       newCourses = coursesData[category] || [];
       if (coursesData.programms) {
         newProgramms = coursesData.programms.filter((prog) => prog.group === category);
@@ -57,27 +60,49 @@ export function Courses() {
     setFilteredProgramms(newProgramms);
   }
 
+  // Если компонент работает в статичном режиме, переключение категорий не требуется
   function handleCategoryChange(category) {
     setActiveCategory(category);
     filterCoursesAndPrograms(category);
   }
 
-  // Создаем рефы для навигации курсов и программ
+  // При изменении fixed категории (если она передана) автоматически фильтруем данные
+  useEffect(() => {
+    if (staticCategory) {
+      filterCoursesAndPrograms(staticCategory);
+      setActiveCategory(staticCategory);
+    }
+  }, [staticCategory]);
+
+  // Рефы для навигации слайдеров
   const coursesPrevRef = useRef(null);
   const coursesNextRef = useRef(null);
   const programsPrevRef = useRef(null);
   const programsNextRef = useRef(null);
 
   return (
-    <div className="container m-auto mb-80">
-      {/* Панель переключения категорий */}
-      <div className="flex flex-row mb-20">
-        <CoursesButtons activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
-      </div>
+    <div className="container m-auto mb-80" style={{ paddingTop: `${pt}px` }}>
+      {forCoursesPage &&
+        categoryData.map((category) => (
+          <div key={uuidv4()} className="flex flex-col justify-start rounded-lg ">
+            {console.log(category.description)}
+            <h2 className="mb-20 h2 sm:h1 text-neutral-900 sm:text-neutral-900">
+              {category.title}
+            </h2>
+            <p className="mb-20 body-16 text-neutral-600">{category.description}</p>
+          </div>
+        ))}
+
+      {/* Отображать панель переключения категорий только если showButtons === true */}
+      {showButtons && (
+        <div className="flex flex-row mb-20">
+          <CoursesButtons activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
+        </div>
+      )}
 
       {/* --- Слайдер КУРСОВ --- */}
       {activeCategory !== "programms" && filteredCourses.length > 0 && (
-        <div className="relative sm:mb-[-16px] mb-[8px] md:mb-[8px]">
+        <div className="relative mb-[8px] md:mb-[8px]">
           <Swiper
             modules={[Navigation]}
             loop={true}
@@ -86,7 +111,6 @@ export function Courses() {
               nextEl: coursesNextRef.current,
             }}
             onBeforeInit={(swiper) => {
-              // Привязываем элементы навигации до инициализации
               swiper.params.navigation.prevEl = coursesPrevRef.current;
               swiper.params.navigation.nextEl = coursesNextRef.current;
             }}
@@ -99,7 +123,7 @@ export function Courses() {
           >
             {filteredCourses.map((course, idx) => (
               <SwiperSlide key={idx}>
-                <div className="">
+                <div>
                   <CourseCard course={course} />
                 </div>
               </SwiperSlide>
@@ -149,7 +173,7 @@ export function Courses() {
           >
             {filteredProgramms.map((program, idx) => (
               <SwiperSlide key={idx}>
-                <div className="">
+                <div>
                   <ProgramCard course={program} />
                 </div>
               </SwiperSlide>

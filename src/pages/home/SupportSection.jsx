@@ -69,7 +69,7 @@ export default function SupportSection() {
   useSwiperNavigation(swiperRef, prevButtonRef, nextButtonRef);
 
   return (
-    <section className="relative overflow-hidden pt-50 pb-100">
+    <section className="relative overflow-hidden pt-[50px] pb-80">
       {/* Левая часть */}
       <div className="container m-auto relative mb-[40px] lg:mb-0">
         <div className="flex justify-between align-middle lg:absolute lg:block">

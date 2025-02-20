@@ -1,5 +1,4 @@
 import heroImg from "../../assets/img/hero.jpg";
-import bgCircles from "../../assets/img/bgLines.svg";
 
 import { createBackgroundStyles } from "../../utility/bgImg";
 
