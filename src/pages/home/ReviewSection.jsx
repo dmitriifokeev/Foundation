@@ -7,9 +7,11 @@ import bgCircles from "../../assets/img/bgLines.svg";
 import NavigationButton from "../../UI/NavigationButton";
 import { createBackgroundStyles } from "../../utility/bgImg";
 import useSwiperNavigation from "../../hooks/useSwiperNavigationBtn";
-import coursesData from "../../data/coursesData";
+
 import { useState } from "react";
 import { useEffect } from "react";
+
+import { allCoursesData } from "../../data/filteredCoursesData";
 
 export default function ReviewsSection({ allReviews, currentCourse }) {
   const [reviews, setReviews] = useState([]);
@@ -55,17 +57,16 @@ export default function ReviewsSection({ allReviews, currentCourse }) {
 
   useEffect(() => {
     if (allReviews) {
-      function collectFirstReviews(data) {
-        return Object.values(data)
-          .flatMap((category) =>
-            category.flatMap((course) =>
-              course.details?.reviews?.list?.length ? course.details.reviews.list[0] : null
-            )
-          )
-          .filter((review) => review !== null);
+      function collectFirstReviews(allCourses) {
+        return allCourses
+          .flatMap((course) => {
+            // и уже тут проверяем, есть ли у курса reviews.list
+            return course.details?.reviews?.list?.length ? course.details.reviews.list[0] : null;
+          })
+          .filter(Boolean);
       }
 
-      setReviews(collectFirstReviews(coursesData));
+      setReviews(collectFirstReviews(allCoursesData));
     } else {
       setReviews(list);
     }

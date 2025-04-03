@@ -1,10 +1,10 @@
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useLayoutEffect } from "react";
 import arrowRight from "../../assets/img/arrowRight.svg";
 import { Link } from "react-router-dom";
 import Button from "../../UI/Button";
 
 function ProgramSection({ currentCourse }) {
-  // Вместо одного открытого таба, используем массив открытых табов
+  // Массив открытых табов
   const [openTabs, setOpenTabs] = useState([1]);
 
   const handleToggle = (id) => {
@@ -14,29 +14,10 @@ function ProgramSection({ currentCourse }) {
   };
 
   const {
-    slug,
+    // Деструктуризация currentCourse (если нет данных — пустой объект)
     hero: { title, heroSubtitle } = {},
-    bgImg = "",
-    difficulty = 1,
-    details: {
-      lessons,
-      hours,
-      duration,
-      practices,
-      tests,
-      projects,
-      price,
-      oldPrice,
-      videoAdLink,
-      program = [],
-      about: { title: aboutTitle, boxImgTitle, text: aboutText } = {},
-      salary: { title: salaryTitle, text: salaryText, note: salaryNote, salaryLevels } = {},
-      skills: { topics, tools } = {},
-      reviews: { totalCount, ratings, links, list } = {},
-    } = {},
+    details: { programs = [] } = {},
   } = currentCourse || {};
-
-  console.log(program);
 
   return (
     <section className="container pb-0 m-auto md:pt-20 md:pb-20">
@@ -49,27 +30,42 @@ function ProgramSection({ currentCourse }) {
         </div>
 
         {/* Правая колонка */}
-        <div className="grid md:grid-cols-[3fr_2fr] grid-cols-1 gap-20 p-20 pt-32 bg-neutral-700 rounded-xl">
-          {/* Табы */}
-          <div className="order-2 mx-auto border-t border-b border-l border-r rounded-md md:order-1 h-fit border-neutral-500">
-            {program.map((tab, index) => (
-              <Tab
-                tabNum={index + 1}
-                key={tab.id}
-                tab={tab}
-                isOpen={openTabs.includes(tab.id)}
-                onToggle={() => handleToggle(tab.id)}
-              />
+        <div>
+          {/* Блок с табами */}
+          <div className="p-20 pt-32 bg-neutral-700 rounded-xl">
+            {programs.map((program, programIndex) => (
+              <div key={programIndex} className="grid lg:grid-cols-[3fr_2fr] grid-cols-1 gap-20">
+                <div className="order-2 mx-auto mb-32 border-t border-b border-l border-r rounded-md last:mb-0 lg:order-1 h-fit border-neutral-500">
+                  {program.program.map((tab, index) => (
+                    <Tab
+                      tabNum={index + 1}
+                      key={tab.id}
+                      tab={tab}
+                      isOpen={openTabs.includes(tab.id)}
+                      onToggle={() => handleToggle(tab.id)}
+                    />
+                  ))}
+                </div>
+                {/* Блок с информацией о курсе */}
+                <div key={`info-${programIndex}`} className="flex flex-col order-1 gap-8 pt-8">
+                  <h2 className="mb-20 md:mb-8 lg:h2 h3 text-neutral-100">
+                    {program.programHeader.title}
+                  </h2>
+                  <img
+                    className="mb-20 rounded-md md:mb-8"
+                    src={program.programHeader.bgImg}
+                    alt="Обложка курса"
+                  />
+                  <p className="body-14 max-w-[500px] text-neutral-300 mb-8">
+                    {program.programHeader.heroSubtitle}
+                  </p>
+                  {/* Если необходимо, можно добавить кнопку */}
+                  {/* <Link to="/#">
+                    <Button>Записаться на курс</Button>
+                  </Link> */}
+                </div>
+              </div>
             ))}
-          </div>
-          {/* Информация о курсе */}
-          <div className="flex flex-col order-1 gap-8 pt-8">
-            <h2 className="mb-20 md:mb-8 lg:h2 h3 text-neutral-100">{title}</h2>
-            <img className="mb-20 md:mb-8" src={bgImg} alt="Обложка курса" />
-            <p className="body-14 max-w-[500px] text-neutral-300 mb-8">{heroSubtitle}</p>
-            <Link to="/#">
-              <Button>Записаться на курс</Button>
-            </Link>
           </div>
         </div>
       </div>
@@ -78,30 +74,24 @@ function ProgramSection({ currentCourse }) {
 }
 
 function Tab({ tab, isOpen, onToggle, tabNum }) {
-  // Рефы для шапки и содержимого
   const headerRef = useRef(null);
   const contentRef = useRef(null);
-
-  // maxHeight для анимации
+  // Начальное значение maxHeight – сначала показываем только шапку таба
   const [maxHeight, setMaxHeight] = useState("0px");
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!headerRef.current || !contentRef.current) return;
-
-    // Высота шапки (заголовок + подзаголовок) + дополнительное пространство (24px)
+    // Вычисляем высоту шапки + небольшой отступ (24px)
     const headerHeight = headerRef.current.scrollHeight + 24;
-    // Высота скрываемого контента (уроки)
+    // Вычисляем высоту содержимого (уроки)
     const contentHeight = contentRef.current.scrollHeight;
-
-    if (isOpen) {
-      setMaxHeight(`${headerHeight + contentHeight}px`);
-    } else {
-      setMaxHeight(`${headerHeight}px`);
-    }
+    setMaxHeight(isOpen ? `${headerHeight + contentHeight}px` : `${headerHeight}px`);
   }, [isOpen]);
 
   return (
-    <div className="transition-all cursor-pointer" onClick={onToggle}>
+    // Обработчик onClick теперь на внешнем контейнере,
+    // что делает область клика всей области таба
+    <div className="cursor-pointer" onClick={onToggle}>
       <div
         style={{ maxHeight }}
         className="grid grid-cols-[auto_1fr_15%] border-b border-neutral-500 overflow-hidden transition-all duration-500 ease-in-out group"
@@ -119,16 +109,20 @@ function Tab({ tab, isOpen, onToggle, tabNum }) {
           </div>
         </div>
 
-        {/* Центральная колонка (заголовок + контент) */}
+        {/* Центральная колонка */}
         <div className="flex flex-col pt-20 pl-16">
-          {/* Шапка таба: заголовок, подзаголовок */}
+          {/* Заголовок таба – убран onClick, так как он уже на внешнем контейнере */}
           <div className="pb-8" ref={headerRef}>
             <h3 className="mb-[4px] h5">{tab.title}</h3>
             <p className="text-gray-400 body-12">{tab.info}</p>
           </div>
-
-          {/* Раскрывающаяся часть (уроки) */}
-          <div ref={contentRef} className="pb-20 transition-all duration-300 ease-in-out">
+          {/* Раскрывающаяся часть с уроками с дополнительной анимацией */}
+          <div
+            ref={contentRef}
+            className={`pb-20 transition-all duration-500 ease-in-out ${
+              isOpen ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-5"
+            }`}
+          >
             {tab.lessons.map((lesson, idx) => (
               <div
                 key={idx}
@@ -137,7 +131,10 @@ function Tab({ tab, isOpen, onToggle, tabNum }) {
                 <span className="font-semibold body-14 text-primary-500">
                   {String(idx + 1).padStart(2, "0")}
                 </span>
-                <span className="ml-2 body-12 text-neutral-200">{lesson}</span>
+                <div className="flex flex-row justify-between w-full">
+                  <span className="ml-2 body-12 text-neutral-200">{lesson.lesson}</span>
+                  <span className="ml-2 body-12 text-neutral-200">{lesson.time}</span>
+                </div>
               </div>
             ))}
           </div>

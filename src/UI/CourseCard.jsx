@@ -15,17 +15,37 @@ function CourseCard({ course }) {
     difficulty === 2 ? "bg-secondary-50 text-secondary-700" : "bg-primary-100 text-primary-700";
 
   // Извлекаем нужные поля из details
-  const { lessons, hours, duration, practices, tests, projects, oldPrice, price } = details;
+  const {
+    raiting,
+    raitingNubmer,
+    lessons,
+    hours,
+    duration,
+    practices,
+    tests,
+    projects,
+    oldPrice,
+    price,
+  } = details;
 
   // Формируем массив для вывода деталей
-  const detailItems = [lessons, hours, duration, practices, tests, projects].filter(Boolean);
+  const detailItems = [
+    raiting,
+    raitingNubmer,
+    lessons,
+    hours,
+    duration,
+    practices,
+    tests,
+    projects,
+  ].filter(Boolean);
 
   return (
     <Link to={`/courses/${slug}`}>
       <div className="relative overflow-hidden bg-neutral-700 rounded-xl group">
         {/* Label */}
         <div className="px-8 pt-8 mb-8">
-          <div className="p-16 bg-neutral-50 rounded-xl">
+          <div className="p-16 rounded-md bg-neutral-50">
             <div className="flex items-center gap-2 mb-[2px]">
               <span className="body-14 text-neutral-600">{type}</span>
               <span className="text-neutral-600 text-[12px]">•</span>

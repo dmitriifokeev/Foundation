@@ -10,6 +10,7 @@ export default function AboutCourseSection({ currentCourse }) {
       type,
       lessonsNum, // возможно, undefined, если не передано
       hoursNum, // возможно, undefined
+      bgImgShort,
     } = {},
     bgImg = "",
     difficulty = 1,
@@ -34,6 +35,9 @@ export default function AboutCourseSection({ currentCourse }) {
     } = {},
   } = currentCourse || {};
 
+  // Разбиваем slug на отдельные слова и запихиваем в массив типа "video-montage-program"
+  const wordsFromSlugArr = slug.split("-");
+
   return (
     <section className="container m-auto pt-60 lg:pb-120 pb-80">
       <div className="flex flex-col items-center sm:gap-32 lg:flex-row">
@@ -52,7 +56,7 @@ export default function AboutCourseSection({ currentCourse }) {
               {boxImgTitle}
             </div>
             <img
-              src={bgImg}
+              src={wordsFromSlugArr.includes("program") ? bgImgShort : bgImg}
               alt="Девушка с ноутбуком"
               className=" rounded-lg max-w-[355px] z-20 relative mt-[-20px] self-end w-[70%] md:w-[100%]"
             />

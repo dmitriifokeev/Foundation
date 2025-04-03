@@ -27,9 +27,9 @@ export default function ProgramCard({ course }) {
           fontSize={24}
           coordinate={{ top: -23, right: -20, bottom: null, left: null }}
         />
-        <h2 className="absolute z-50 text-white sm:text-[150px] font-semibold font-main sm:bottom-[-52px] bottom-[-32px] right-[10px] text-[100px] tracking-tighter sm420:text-[120px] sm420:bottom-[-40px] lg:bottom-[-72px] lg:text-[200px] md:group-hover:opacity-0 transition-opacity duration-300">
+        {/* <h2 className="absolute z-50 text-white sm:text-[150px] font-semibold font-main sm:bottom-[-52px] bottom-[-32px] right-[10px] text-[100px] tracking-tighter sm420:text-[120px] sm420:bottom-[-40px] lg:bottom-[-72px] lg:text-[200px] md:group-hover:opacity-0 transition-opacity duration-300">
           Junior
-        </h2>
+        </h2> */}
 
         {/* Верхний блок */}
         <div className="relative w-full h-56 overflow-hidden rounded-xl ">
@@ -42,7 +42,7 @@ export default function ProgramCard({ course }) {
 
           {/* Лейбл/тайтл */}
           <div className="absolute z-30 px-16 pt-8 mb-8 transition-opacity duration-300 md:group-hover:opacity-0">
-            <div className="p-16 rounded-xl bg-neutral-50">
+            <div className="p-16 rounded-md bg-neutral-50">
               <div className="flex items-center gap-2 mb-[2px]">
                 <span className="body-14 text-neutral-600">{type}</span>
                 <span className="text-neutral-600 text-[12px]">•</span>

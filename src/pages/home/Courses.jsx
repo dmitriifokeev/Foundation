@@ -5,74 +5,56 @@ import iconLeftSliderBtnWhite from "../../assets/img/buttonsSvg/iconLeftSliderBt
 import iconRightSliderBtnWhite from "../../assets/img/buttonsSvg/iconRightSliderBtnWhite.svg";
 import "swiper/css"; // базовые стили Swiper
 
-import coursesData from "../../data/coursesData";
 import CourseCard from "../../UI/CourseCard";
 import CoursesButtons from "./CoursesButtons";
 import ProgramCard from "../../UI/ProgramCard";
 
+// Это ваш готовый массив категорий, уже с подставленными курсами для fromZero и proLevel.
+// Предположим, он импортируется как summaryCoursesData:
+import { allCategoriesData } from "../../data/filteredCoursesData";
+
 import { v4 as uuidv4 } from "uuid";
 
-export function Courses({ pt, staticCategory, showButtons = true, categoryData, forCoursesPage }) {
-  // Если передан staticCategory, то используем его, иначе значение по умолчанию
+export function Courses({ pt, staticCategory, showButtons = true }) {
+  // Если передали staticCategory, используем его как slug, иначе берём "webDevelopment" по умолчанию
   const initialCategory = staticCategory || "webDevelopment";
 
+  // Активная категория
   const [activeCategory, setActiveCategory] = useState(initialCategory);
-  const [filteredCourses, setFilteredCourses] = useState(coursesData[initialCategory] || []);
-  const [filteredProgramms, setFilteredProgramms] = useState(() =>
-    coursesData.programms
-      ? coursesData.programms.filter((prog) => prog.group === initialCategory)
-      : []
-  );
 
-  // Фильтрация курсов и программ по выбранной категории
-  function filterCoursesAndPrograms(category) {
-    let newCourses = [];
-    let newProgramms = [];
-
-    if (category === "fromZero") {
-      // Курсы для начинающих (difficulty === 1)
-      const keysWithoutProgramms = Object.keys(coursesData).filter((k) => k !== "programms");
-      newCourses = keysWithoutProgramms
-        .map((key) => coursesData[key])
-        .flat()
-        .filter((course) => course.difficulty === 1);
-      newProgramms = coursesData.programms || [];
-    } else if (category === "proLevel") {
-      // Курсы для продвинутых (difficulty === 2)
-      const keysWithoutProgramms = Object.keys(coursesData).filter((k) => k !== "programms");
-      newCourses = keysWithoutProgramms
-        .map((key) => coursesData[key])
-        .flat()
-        .filter((course) => course.difficulty === 2);
-      newProgramms = [];
-    } else if (category === "programms") {
-      newCourses = [];
-      newProgramms = coursesData.programms || [];
-    } else {
-      // Обычная категория (например, "webDevelopment", "CMS", "webDesign" и т.д.)
-      newCourses = coursesData[category] || [];
-      if (coursesData.programms) {
-        newProgramms = coursesData.programms.filter((prog) => prog.group === category);
-      }
-    }
-
-    setFilteredCourses(newCourses);
-    setFilteredProgramms(newProgramms);
-  }
-
-  // Если компонент работает в статичном режиме, переключение категорий не требуется
-  function handleCategoryChange(category) {
-    setActiveCategory(category);
-    filterCoursesAndPrograms(category);
-  }
-
-  // При изменении fixed категории (если она передана) автоматически фильтруем данные
+  // При каждом изменении staticCategory (если передаётся) — обновляем activeCategory
   useEffect(() => {
     if (staticCategory) {
-      filterCoursesAndPrograms(staticCategory);
       setActiveCategory(staticCategory);
     }
   }, [staticCategory]);
+
+  // Находим объект категории, у которой slug === activeCategory
+  const activeCategoryData = allCategoriesData.find((cat) => cat.slug === activeCategory);
+
+  // Для программ — ищем категорию, где slug === "programms"
+  const programmsCategory = allCategoriesData.find((cat) => cat.slug === "programms");
+
+  // Массив курсов активной категории
+  const filteredCourses = activeCategoryData?.courses || [];
+
+  // Если выбрана категория "programms", показываем все программы.
+  // Иначе показываем программы, которые относятся к текущей категории (через поле group).
+  let filteredProgramms = [];
+  if (programmsCategory) {
+    if (activeCategory === "programms") {
+      filteredProgramms = programmsCategory.courses;
+    } else {
+      filteredProgramms = programmsCategory.courses.filter(
+        (prog) => prog.group && prog.group.includes(activeCategory)
+      );
+    }
+  }
+
+  // Функция переключения категории (при нажатии на кнопки)
+  function handleCategoryChange(categorySlug) {
+    setActiveCategory(categorySlug);
+  }
 
   // Рефы для навигации слайдеров
   const coursesPrevRef = useRef(null);
@@ -82,17 +64,6 @@ export function Courses({ pt, staticCategory, showButtons = true, categoryData, 
 
   return (
     <div className="container m-auto mb-80" style={{ paddingTop: `${pt}px` }}>
-      {forCoursesPage &&
-        categoryData.map((category) => (
-          <div key={uuidv4()} className="flex flex-col justify-start rounded-lg ">
-            {console.log(category.description)}
-            <h2 className="mb-20 h2 sm:h1 text-neutral-900 sm:text-neutral-900">
-              {category.title}
-            </h2>
-            <p className="mb-20 body-16 text-neutral-600">{category.description}</p>
-          </div>
-        ))}
-
       {/* Отображать панель переключения категорий только если showButtons === true */}
       {showButtons && (
         <div className="flex flex-row mb-20">
@@ -101,6 +72,7 @@ export function Courses({ pt, staticCategory, showButtons = true, categoryData, 
       )}
 
       {/* --- Слайдер КУРСОВ --- */}
+      {/* Если текущая категория НЕ "programms", и в ней есть курсы */}
       {activeCategory !== "programms" && filteredCourses.length > 0 && (
         <div className="relative mb-[8px] md:mb-[8px]">
           <Swiper
@@ -155,6 +127,7 @@ export function Courses({ pt, staticCategory, showButtons = true, categoryData, 
       )}
 
       {/* --- Слайдер ПРОГРАММ --- */}
+      {/* Если в массиве программ что-то есть, показываем их отдельным слайдером */}
       {filteredProgramms.length > 0 && (
         <div className="relative">
           <Swiper
@@ -195,7 +168,11 @@ export function Courses({ pt, staticCategory, showButtons = true, categoryData, 
             ref={programsNextRef}
             className="absolute right-0 z-50 w-40 h-40 p-3 transform -translate-y-1/2 rounded-full top-1/2 bg-neutral-900/40"
           >
-            <img src={iconRightSliderBtnWhite} alt="right arrow" />
+            <img
+              className="absolute transform -translate-y-1/2 top-1/2"
+              src={iconRightSliderBtnWhite}
+              alt="right arrow"
+            />
           </button>
         </div>
       )}

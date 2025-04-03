@@ -3,7 +3,6 @@ import Button from "../../UI/Button";
 import PromotionTimer from "../../UI/PromotionTimer";
 import { getLessonWord, getHourWord } from "../../utility/formatWordFromNum";
 import StarRating from "../../UI/StartRaiting";
-import { useEffect } from "react";
 
 // Вспомогательная функция: если значение - число, возвращаем его,
 // если это строка (например, "226 уроков"), пытаемся извлечь число из текста.
@@ -49,6 +48,9 @@ function HeroCoursePage({ currentCourse }) {
       reviews: { totalCount, ratings, links, list } = {},
     } = {},
   } = currentCourse || {};
+
+  // Разбиваем slug на отдельные слова и запихиваем в массив типа "video-montage-program"
+  const wordsFromSlugArr = slug.split("-");
 
   // Если hero не передал числовые данные, берём из details
   const finalLessonsNum = parseNumber(lessons);
@@ -102,9 +104,9 @@ function HeroCoursePage({ currentCourse }) {
       {/* Видео */}
       <div className="relative mb-8 overflow-hidden lg:w-full aspect-video rounded-xl">
         <iframe
-          title="vimeo-player"
-          src="https://player.vimeo.com/video/1051233466?h=e31772d8a6"
           className="absolute inset-0 w-full h-full"
+          src={videoAdLink}
+          allow="clipboard-write; autoplay"
         ></iframe>
       </div>
 
@@ -148,31 +150,33 @@ function HeroCoursePage({ currentCourse }) {
           </p>
         </div>
         {/* Отзывы */}
-        <div className="flex flex-col items-start justify-center col-span-2 p-8 border rounded-md body-10 border-neutral-300">
-          <div className="mb-4 h7 text-neutral-900">
-            <StarRating />
+        {!wordsFromSlugArr.includes("program") && (
+          <div className="flex flex-col items-start justify-center col-span-2 p-8 border rounded-md body-10 border-neutral-300">
+            <div className="mb-4 h7 text-neutral-900">
+              <StarRating />
+            </div>
+            <p className="leading-4 text-neutral-700 max-w-[130px] sm420:max-w-[180px] sm:max-w-[310px] md:max-w-[390px]  lg:max-w-[250px]">
+              Более {totalCount} отзывов со средней оценкой {ratings.udemy} на{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline text-primary-500"
+                href={links.udemy}
+              >
+                Udemy
+              </a>{" "}
+              и {ratings.stepik} на{" "}
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline text-primary-500"
+                href={links.stepik}
+              >
+                Stepik
+              </a>
+            </p>
           </div>
-          <p className="leading-4 text-neutral-700 max-w-[130px] sm420:max-w-[180px] sm:max-w-[310px] md:max-w-[390px]  lg:max-w-[250px]">
-            Более {totalCount} отзывов со средней оценкой {ratings.udemy} на{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline text-primary-500"
-              href={links.udemy}
-            >
-              Udemy
-            </a>{" "}
-            и {ratings.stepik} на{" "}
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline text-primary-500"
-              href={links.stepik}
-            >
-              Stepik
-            </a>
-          </p>
-        </div>
+        )}
       </div>
     </div>
   );

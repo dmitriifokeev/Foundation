@@ -1,7 +1,9 @@
 import { useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, EffectFade, Controller } from "swiper/modules";
-import bgBlueLines from "../../assets/img/bgBlueLines.jpg";
+
+import practice from "../../assets/img/Practice.png";
+import projects from "../../assets/img/projects.png";
 
 import NavigationButtons from "../../UI/NavigationButton";
 import useSwiperNavigation from "../../hooks/useSwiperNavigationBtn";
@@ -27,7 +29,7 @@ const steps = [
     ],
     buttonText: "Практика",
     contentType: "image",
-    contentValue: bgBlueLines, // 🔹 Изображение
+    contentValue: practice, // 🔹 Изображение
   },
   {
     id: 3,
@@ -37,8 +39,8 @@ const steps = [
       "Вы создаете полноценные проекты с нуля.",
     ],
     buttonText: "Проекты",
-    contentType: "video",
-    contentValue: "https://downloader.disk.yandex.ru/disk/YOUR_VIDEO_FILE", // 🔹 Видео-файл
+    contentType: "image",
+    contentValue: projects, // 🔹 Видео-файл
   },
 ];
 
@@ -75,11 +77,11 @@ export default function LearningProcessSection() {
             <div className="grid grid-cols-1 grid-rows-[auto_auto_auto_auto] sm:grid-cols-[40%_60%] lg:grid-cols-[50%_50%] lg:px-40 sm:grid-rows-[auto_auto_auto] gap-8 py-[20px] bg-white rounded-xl">
               {/* Общая пагинация */}
               <div className="mb-20 sm:justify-center sm:flex sm:col-start-2 sm:col-end-3 sm:row-start-1 sm:row-end-2 sm:mb-0">
-                <div className="sm:mt-4 custom-swiper-pagination"></div>
+                <div className="mb-20 sm:mt-4 custom-swiper-pagination"></div>
               </div>
 
               {/* Текстовый слайдер с навигацией */}
-              <div className="text-center sm:mr-8 sm:text-left col-start-1 col-end-2 row-start-2 row-end-3 lg:max-w-[80%] sm:col-start-1 sm:col-end-2 sm:row-start-2 sm:row-end-3 mb-20 sm:mb-0 sm:mt-20">
+              <div className="text-center sm:mr-8 sm:text-left col-start-1 col-end-2 row-start-2 row-end-3 lg:max-w-[80%] sm:col-start-1 sm:col-end-2 sm:row-start-2 sm:row-end-3 mb-20 sm:mb-0 sm:mt-0 ">
                 <Swiper
                   effect="fade"
                   fadeEffect={{ crossFade: true }}
@@ -149,7 +151,7 @@ export default function LearningProcessSection() {
                           <div className="relative w-full overflow-hidden aspect-video rounded-xl">
                             <iframe
                               title="vimeo-player"
-                              src="https://player.vimeo.com/video/1051233466?h=e31772d8a6"
+                              src="https://rutube.ru/play/embed/6a2b43e0d8572f042c78c1c45e470bfb"
                               className="absolute inset-0 w-full h-full"
                             ></iframe>
                           </div>
