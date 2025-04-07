@@ -11,7 +11,7 @@ import designTheoryProgram from "./designTheoryProgram";
 const designTheoryData = {
   slug: "design-theory-essential",
   hero: {
-    title: "Теория дизайна",
+    title: "Курс по теория дизайна",
     tag: "C нуля",
     heroSubtitle:
       "Этот курс состоит из трёх больших, теоретических тем, которые обязаны иметь в своей копилке знаний, каждый профессиональный дизайнер, фотограф или художник — это теория цвета, типографика и композиция!",
@@ -27,8 +27,14 @@ const designTheoryData = {
     hours: "5,5 часов видео",
     duration: "1 месяц",
     practices: "3 самостоятельные практик",
-    price: "1,990 руб",
+    // price: "1,990 руб",
+    price: "5 руб",
     oldPrice: "3,990 руб",
+
+    // Эти данные обязательны:
+    skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+
+    skillspaceCourses: [{ courseId: "15633", groupId: "25263" }],
 
     about: {
       boxImgTitle:

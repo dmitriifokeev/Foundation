@@ -9,7 +9,7 @@ import webflowEssentialProgram from "./webflowEssentialProgram";
 const webflowEssentialCourseData = {
   slug: "webflow-essential",
   hero: {
-    title: "Верстка в Webflow",
+    title: "Курс верстка сайтов в Webflow",
     tag: "C нуля",
     heroSubtitle:
       "Научитесь создавать удивительные сайты любой сложности на no-code платформе Webflow с нуля, без программирования.",
@@ -26,8 +26,14 @@ const webflowEssentialCourseData = {
     duration: "2 месяца",
     practices: "5 самостоятельных практик",
     projects: "2 проекта",
-    price: "2,490 руб",
+    // price: "2,490 руб",
+    price: "5 руб",
     oldPrice: "4,990 руб",
+
+    // Эти данные обязательны:
+    skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+
+    skillspaceCourses: [{ courseId: "30470", groupId: "45914" }],
 
     about: {
       boxImgTitle:

@@ -10,7 +10,7 @@ import photoshopEssentialProgram from "./photoshopEssentialProgram";
 const photoshopEssentialCourselData = {
   slug: "photoshop-essential",
   hero: {
-    title: "Photoshop",
+    title: "Курс Photoshop с нуля",
     tag: "C нуля",
     heroSubtitle:
       "Курс позволит вам быстро освоить все необходимые инструменты для работы с изображениями в программе Photoshop!",
@@ -27,8 +27,14 @@ const photoshopEssentialCourselData = {
     duration: "1 месяц",
     practices: "10 самостоятельных практик",
     projects: "5 проектов",
-    price: "1,990 руб",
+    // price: "1,990 руб",
+    price: "5 руб",
     oldPrice: "3,990 руб",
+
+    // Эти данные обязательны:
+    skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+
+    skillspaceCourses: [{ courseId: "15520", groupId: "25113" }],
 
     about: {
       boxImgTitle:

@@ -13,7 +13,7 @@ const programFigmaAnimationFigmaDesignCourselData = {
   slug: "web-designer-program",
   group: ["webDesign", "fromZero"], // добавлено свойство group
   hero: {
-    title: "Веб дизайнер с нуля. Веб дизайн + Figma анимации",
+    title: "Программа: Веб дизайнер с нуля. Веб дизайн + Figma анимации",
     tag: "C нуля",
     type: "Программа",
     heroSubtitle:
@@ -29,8 +29,17 @@ const programFigmaAnimationFigmaDesignCourselData = {
     practices: "8 самостоятельных практик",
     // tests: "—",
     projects: "2 проекта",
-    price: "3,990 руб",
+    // price: "3,990 руб",
+    price: "5 руб",
     oldPrice: "7,990 руб",
+
+    // Эти данные обязательны:
+    skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+    skillspaceCourses: [
+      { courseId: "14500", groupId: "23501" },
+      { courseId: "15574", groupId: "25181" },
+    ],
+
     about: {
       boxImgTitle:
         "Веб-дизайн и анимация в Figma — это создание современных UX/UI макетов, интерактивных и впечатляющих интерфейсов для веб-проектов",

@@ -10,7 +10,7 @@ import wordPressEssentialProgram from "./wordPressEssentialProgram";
 const wordpressCourseEssentialData = {
   slug: "wordpress-essential",
   hero: {
-    title: "WordPress",
+    title: "Курс создание сайтов в WordPress",
     tag: "C нуля",
     heroSubtitle:
       "Курс по WordPress познакомит вас со всеми инструментами для создания современного сайта с любым дизайном и полным функционалом без подписок и дополнительных трат, которые есть у других CMS и конструкторов сайтов.",
@@ -27,8 +27,14 @@ const wordpressCourseEssentialData = {
     duration: "2 месяца",
     practices: "4 самостоятельных практик",
     projects: "2 проекта",
-    price: "2,490 руб",
+    // price: "2,490 руб",
+    price: "5 руб",
     oldPrice: "4,990 руб",
+
+    // Эти данные обязательны:
+    skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+
+    skillspaceCourses: [{ courseId: "40246", groupId: "61031" }],
 
     about: {
       boxImgTitle:

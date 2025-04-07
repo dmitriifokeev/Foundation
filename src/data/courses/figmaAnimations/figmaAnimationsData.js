@@ -9,7 +9,7 @@ import motionFigmaProgram from "./motionFigmaProgram";
 const figmaAnimationsData = {
   slug: "figma-animations",
   hero: {
-    title: "Figma Анимации",
+    title: " Курс Figma Анимации",
     tag: "C знаниями основ Figma",
     heroSubtitle:
       "Курс Figma Motion и главные правила UX, погрузит вас в самые современные принципы создания анимированных веб сайтов в программе Figma.",
@@ -25,8 +25,14 @@ const figmaAnimationsData = {
     hours: "6,5 часов видео",
     duration: "1 месяц",
     practices: "3 самостоятельных практик",
-    price: "1,990 руб",
+    // price: "1,990 руб",
+    price: "5 руб",
     oldPrice: "3,990 руб",
+
+    // Эти данные обязательны:
+    skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+
+    skillspaceCourses: [{ courseId: "15574", groupId: "25181" }],
 
     about: {
       boxImgTitle:

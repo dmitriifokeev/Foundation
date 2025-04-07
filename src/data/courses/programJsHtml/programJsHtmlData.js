@@ -13,7 +13,7 @@ const programJsHtmlCourselData = {
   slug: "js-html-program",
   group: ["webDevelopment", "fromZero"], // добавлено свойство group
   hero: {
-    title: "Front-End Веб разработчик. Верстка + Js",
+    title: "Программа: Верстка + Js",
     tag: "C нуля",
     type: "Программа",
     heroSubtitle:
@@ -29,8 +29,17 @@ const programJsHtmlCourselData = {
     practices: "15 самостоятельных практик",
     tests: "5 тестов",
     projects: "4 проекта",
-    price: "4,990 руб",
+    // price: "4,990 руб",
+    price: "5 руб",
     oldPrice: "9,990 руб",
+
+    // Эти данные обязательны:
+    skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+    skillspaceCourses: [
+      { courseId: "14497", groupId: "23496" },
+      { courseId: "15551", groupId: "25151" },
+    ],
+
     about: {
       boxImgTitle: "HTML — основа веб-структуры, JavaScript — динамика и интерактивность",
       title:

@@ -11,7 +11,7 @@ import afterEffectsEssentialProgram from "./afterEffectEssentialProgram";
 const afterEffectsEssentialData = {
   slug: "after-effects-essential",
   hero: {
-    title: "Adobe After Effects",
+    title: "Курс по Adobe After Effects",
     tag: "C нуля",
     heroSubtitle:
       "В этом курсе вы узнаете всё о создании современной и эффектной графики в программе After Effects! Получите востребованные навыки по созданию графики и анимации в After Effects!",
@@ -28,8 +28,14 @@ const afterEffectsEssentialData = {
     duration: "2 месяца обучения",
     practices: "6 самостоятельных практик",
     projects: "3 проекта",
-    price: "1,990 руб",
+    // price: "1,990 руб",
+    price: "5 руб",
     oldPrice: "4,990 руб",
+
+    // Эти данные обязательны:
+    skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+
+    skillspaceCourses: [{ courseId: "15556", groupId: "25159" }],
 
     about: {
       boxImgTitle: "AfterEffect - стандарт индустрии по созданию графики и анимации",

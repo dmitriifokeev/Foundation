@@ -12,7 +12,7 @@ const reactJsEssentialCourseData =
   {
     slug: "react-essential",
     hero: {
-      title: "React JS",
+      title: "Курс React JS",
       tag: "Со знанием JS и HTML",
       heroSubtitle:
         "Ультимативный курс по React JS + Полное изучение библиотек экосистемы React ( Redux / Router ) Бонус - полный курс по Tailwind CSS",
@@ -30,8 +30,14 @@ const reactJsEssentialCourseData =
       practices: "13 самостоятельных практик",
       tests: "12 тестов",
       projects: "2 проекта",
-      price: "2,990 руб",
+      // price: "2,990 руб",
+      price: "5 руб",
       oldPrice: "5,990 руб",
+
+      // Эти данные обязательны:
+      skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+
+      skillspaceCourses: [{ courseId: "65374", groupId: "116486" }],
 
       about: {
         boxImgTitle:

@@ -1,45 +1,30 @@
-import { useState, useRef, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 import iconLeftSliderBtnWhite from "../../assets/img/buttonsSvg/iconLeftSliderBtnWhite.svg";
 import iconRightSliderBtnWhite from "../../assets/img/buttonsSvg/iconRightSliderBtnWhite.svg";
+import { useState, useRef, useEffect } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+// Если у вас Swiper 9+, то импортируйте Navigation из "swiper/modules"
+import { Navigation } from "swiper/modules";
 import "swiper/css"; // базовые стили Swiper
 
 import CourseCard from "../../UI/CourseCard";
 import CoursesButtons from "./CoursesButtons";
 import ProgramCard from "../../UI/ProgramCard";
-
-// Это ваш готовый массив категорий, уже с подставленными курсами для fromZero и proLevel.
-// Предположим, он импортируется как summaryCoursesData:
 import { allCategoriesData } from "../../data/filteredCoursesData";
 
-import { v4 as uuidv4 } from "uuid";
-
 export function Courses({ pt, staticCategory, showButtons = true }) {
-  // Если передали staticCategory, используем его как slug, иначе берём "webDevelopment" по умолчанию
   const initialCategory = staticCategory || "webDevelopment";
-
-  // Активная категория
   const [activeCategory, setActiveCategory] = useState(initialCategory);
 
-  // При каждом изменении staticCategory (если передаётся) — обновляем activeCategory
   useEffect(() => {
     if (staticCategory) {
       setActiveCategory(staticCategory);
     }
   }, [staticCategory]);
 
-  // Находим объект категории, у которой slug === activeCategory
   const activeCategoryData = allCategoriesData.find((cat) => cat.slug === activeCategory);
-
-  // Для программ — ищем категорию, где slug === "programms"
   const programmsCategory = allCategoriesData.find((cat) => cat.slug === "programms");
-
-  // Массив курсов активной категории
   const filteredCourses = activeCategoryData?.courses || [];
 
-  // Если выбрана категория "programms", показываем все программы.
-  // Иначе показываем программы, которые относятся к текущей категории (через поле group).
   let filteredProgramms = [];
   if (programmsCategory) {
     if (activeCategory === "programms") {
@@ -51,7 +36,6 @@ export function Courses({ pt, staticCategory, showButtons = true }) {
     }
   }
 
-  // Функция переключения категории (при нажатии на кнопки)
   function handleCategoryChange(categorySlug) {
     setActiveCategory(categorySlug);
   }
@@ -61,10 +45,37 @@ export function Courses({ pt, staticCategory, showButtons = true }) {
   const coursesNextRef = useRef(null);
   const programsPrevRef = useRef(null);
   const programsNextRef = useRef(null);
+  const [coursesSwiper, setCoursesSwiper] = useState(null);
+  const [programsSwiper, setProgramsSwiper] = useState(null);
+
+  // Обновляем навигацию для слайдера курсов с небольшой задержкой
+  useEffect(() => {
+    if (coursesSwiper && coursesPrevRef.current && coursesNextRef.current) {
+      setTimeout(() => {
+        coursesSwiper.params.navigation.prevEl = coursesPrevRef.current;
+        coursesSwiper.params.navigation.nextEl = coursesNextRef.current;
+        coursesSwiper.navigation.destroy();
+        coursesSwiper.navigation.init();
+        coursesSwiper.navigation.update();
+      }, 100);
+    }
+  }, [coursesSwiper, coursesPrevRef.current, coursesNextRef.current]);
+
+  // Аналогично обновляем навигацию для слайдера программ
+  useEffect(() => {
+    if (programsSwiper && programsPrevRef.current && programsNextRef.current) {
+      setTimeout(() => {
+        programsSwiper.params.navigation.prevEl = programsPrevRef.current;
+        programsSwiper.params.navigation.nextEl = programsNextRef.current;
+        programsSwiper.navigation.destroy();
+        programsSwiper.navigation.init();
+        programsSwiper.navigation.update();
+      }, 100);
+    }
+  }, [programsSwiper, programsPrevRef.current, programsNextRef.current]);
 
   return (
     <div className="container m-auto mb-80" style={{ paddingTop: `${pt}px` }}>
-      {/* Отображать панель переключения категорий только если showButtons === true */}
       {showButtons && (
         <div className="flex flex-row mb-20">
           <CoursesButtons activeCategory={activeCategory} onCategoryChange={handleCategoryChange} />
@@ -72,7 +83,6 @@ export function Courses({ pt, staticCategory, showButtons = true }) {
       )}
 
       {/* --- Слайдер КУРСОВ --- */}
-      {/* Если текущая категория НЕ "programms", и в ней есть курсы */}
       {activeCategory !== "programms" && filteredCourses.length > 0 && (
         <div className="relative mb-[8px] md:mb-[8px]">
           <Swiper
@@ -86,6 +96,7 @@ export function Courses({ pt, staticCategory, showButtons = true }) {
               swiper.params.navigation.prevEl = coursesPrevRef.current;
               swiper.params.navigation.nextEl = coursesNextRef.current;
             }}
+            onSwiper={(swiper) => setCoursesSwiper(swiper)}
             breakpoints={{
               0: { slidesPerView: 1 },
               640: { slidesPerView: 2 },
@@ -127,7 +138,6 @@ export function Courses({ pt, staticCategory, showButtons = true }) {
       )}
 
       {/* --- Слайдер ПРОГРАММ --- */}
-      {/* Если в массиве программ что-то есть, показываем их отдельным слайдером */}
       {filteredProgramms.length > 0 && (
         <div className="relative">
           <Swiper
@@ -141,6 +151,7 @@ export function Courses({ pt, staticCategory, showButtons = true }) {
               swiper.params.navigation.prevEl = programsPrevRef.current;
               swiper.params.navigation.nextEl = programsNextRef.current;
             }}
+            onSwiper={(swiper) => setProgramsSwiper(swiper)}
             slidesPerView={1}
             spaceBetween={16}
           >
@@ -153,7 +164,6 @@ export function Courses({ pt, staticCategory, showButtons = true }) {
             ))}
           </Swiper>
 
-          {/* Кастомные кнопки навигации для программ */}
           <button
             ref={programsPrevRef}
             className="absolute left-0 z-50 w-40 h-40 p-3 transform -translate-y-1/2 rounded-full top-1/2 bg-neutral-900/40"

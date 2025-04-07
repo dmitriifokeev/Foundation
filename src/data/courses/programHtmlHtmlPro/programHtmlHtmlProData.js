@@ -13,7 +13,7 @@ const programJsHtmlHtmlProCourseData = {
   slug: "html-htmlPro-program",
   group: ["webDevelopment", "fromZero"], // добавлено свойство group
   hero: {
-    title: "Верстка сайтов Pro Level",
+    title: "Программа: Верстка сайтов Pro Level",
     tag: "C нуля",
     type: "Программа",
     heroSubtitle:
@@ -29,8 +29,17 @@ const programJsHtmlHtmlProCourseData = {
     practices: "10 самостоятельных практик",
     // tests: "—",
     projects: "4 проекта",
-    price: "4,490 руб",
+    // price: "4,490 руб",
+    price: "5 руб",
     oldPrice: "8,990 руб",
+
+    // Эти данные обязательны:
+    skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+    skillspaceCourses: [
+      { courseId: "15551", groupId: "25151" },
+      { courseId: "15583", groupId: "25193" },
+    ],
+
     about: {
       boxImgTitle:
         "HTML — основа всех веб-страниц, а HTML Pro — это семантическая верстка и современные стандарты HTML5",

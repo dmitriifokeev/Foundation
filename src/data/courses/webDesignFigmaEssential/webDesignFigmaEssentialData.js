@@ -10,7 +10,7 @@ import webDesingFigmaEssentialProgram from "./webDesingFigmaEssentialProgram";
 const webDesignFigmaEssentiaCourselData = {
   slug: "figma-essential",
   hero: {
-    title: "Веб дизайн в Figma",
+    title: "Курс веб дизайн в Figma",
     tag: "C нуля",
     heroSubtitle:
       "В этом курсе, вы найдете все для успешного старта карьеры в UX/UI. Быстрый старт в профессию веб дизайнер.",
@@ -27,8 +27,14 @@ const webDesignFigmaEssentiaCourselData = {
     duration: "2 месяца",
     practices: "5 самостоятельных практик",
     projects: "2 проекта",
-    price: "2,490 руб",
+    // price: "2,490 руб",
+    price: "5 руб",
     oldPrice: "4,990 руб",
+
+    // Эти данные обязательны:
+    skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+
+    skillspaceCourses: [{ courseId: "14500", groupId: "23501" }],
 
     about: {
       boxImgTitle:

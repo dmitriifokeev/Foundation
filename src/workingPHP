@@ -1,0 +1,250 @@
+<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+header('Content-Type: application/json; charset=utf-8');
+
+// Проверка запроса
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode(["error" => "Method not allowed"]);
+    exit;
+}
+
+// Получаем данные
+$rawData = file_get_contents('php://input');
+$data = json_decode($rawData, true);
+if (!$data) {
+    http_response_code(400);
+    echo json_encode(["error" => "No JSON data received"]);
+    exit;
+}
+
+// Данные из тела запроса
+$cartItems  = $data['cartItems']  ?? [];
+$totalPrice = $data['totalPrice'] ?? 0;
+$email      = $data['email']      ?? '';
+$phone      = $data['phone']      ?? '';
+
+// --- Подключение к базе ---
+try {
+    $pdo = new PDO('mysql:host=localhost;dbname=u2578932_default;charset=utf8', 'u2578932_default', 'BaGT1cTiRxO37cC2');
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    http_response_code(500);
+    echo json_encode(["error" => "DB connection failed", "details" => $e->getMessage()]);
+    exit;
+}
+
+// --- Сохраняем заказ ---
+$token = '';
+$courseMap = [];
+
+foreach ($cartItems as $item) {
+    $token = $item['details']['skillspaceToken'] ?? '';
+    foreach ($item['details']['skillspaceCourses'] ?? [] as $course) {
+        $courseMap[$course['courseId']] = $course['groupId'];
+    }
+}
+
+$courseJson = json_encode($courseMap);
+
+// Вставляем в таблицу
+$stmt = $pdo->prepare("INSERT INTO orders (email, phone, skillspace_token, course_data) VALUES (?, ?, ?, ?)");
+$stmt->execute([$email, $phone, $token, $courseJson]);
+
+// Получаем ID записи
+$savedOrderId = $pdo->lastInsertId();
+$orderId = 'order_' . $savedOrderId;
+
+// --- Подготовка запроса в Tinkoff ---
+$terminalKey = "1743774791180";
+$secretKey   = 'xL^_j%kKCJ$bb#FO';
+$amount = (int)($totalPrice * 100);
+$description = "Оплата: " . implode(", ", array_map(fn($item) => $item['hero']['title'] ?? '', $cartItems));
+
+$paymentData = [
+    "TerminalKey"     => $terminalKey,
+    "Amount"          => (string)$amount,
+    "OrderId"         => $orderId,
+    "Description"     => $description,
+    "NotificationURL" => "https://foundation-education.com/pay/tinkoff_callback.php",
+    "Language"        => "ru",
+    "PayType"         => "O",
+    "Recurrent"       => "N",
+    "DATA"            => [
+        "Email" => $email,
+        "Phone" => $phone
+    ]
+];
+
+// Генерация токена
+function generateToken(array $params, string $secretKey): string {
+    $flatParams = array_filter($params, fn($v) => !is_array($v));
+    $flatParams['Password'] = $secretKey;
+    ksort($flatParams);
+    $tokenString = implode('', $flatParams);
+    return hash('sha256', $tokenString);
+}
+
+$token = generateToken($paymentData, $secretKey);
+$paymentData["Token"] = $token;
+
+// Отправляем запрос
+$ch = curl_init("https://securepay.tinkoff.ru/v2/Init");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($paymentData));
+
+$response = curl_exec($ch);
+$error = curl_error($ch);
+curl_close($ch);
+
+if ($error) {
+    http_response_code(500);
+    echo json_encode(["error" => "cURL error: " . $error]);
+    exit;
+}
+
+if (!$response) {
+    http_response_code(500);
+    echo json_encode(["error" => "Empty response received from Tinkoff API"]);
+    exit;
+}
+
+$tinkoffData = json_decode($response, true);
+
+if (!isset($tinkoffData['Success']) || !$tinkoffData['Success']) {
+    http_response_code(400);
+    $errMsg = $tinkoffData['Message'] ?? "Ошибка от Тинькофф";
+    echo json_encode([
+        "error"   => $errMsg,
+        "details" => $tinkoffData
+    ]);
+    exit;
+}
+
+$paymentUrl = $tinkoffData['PaymentURL'] ?? '';
+echo json_encode(["paymentUrl" => $paymentUrl]);
+
+////////////////
+
+<?php
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+header('Content-Type: application/json; charset=utf-8');
+
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    http_response_code(405);
+    echo json_encode(["error" => "Method not allowed"]);
+    exit;
+}
+
+$rawData = file_get_contents('php://input');
+$data = json_decode($rawData, true);
+if (!$data) {
+    http_response_code(400);
+    echo json_encode(["error" => "No JSON data received"]);
+    exit;
+}
+
+$cartItems  = $data['cartItems']  ?? [];
+$totalPrice = $data['totalPrice'] ?? 0;
+$email      = $data['email']      ?? '';
+$phone      = $data['phone']      ?? '';
+
+// Формируем список названий купленных курсов
+$courseTitles = [];
+$orderData = [
+    'email' => $email,
+    'phone' => $phone,
+    'skillspace' => []
+];
+
+foreach ($cartItems as $item) {
+    $token = $item['details']['skillspaceToken'];
+    $courseTitles[] = $item['hero']['title'];
+
+    foreach ($item['details']['skillspaceCourses'] as $courseData) {
+        $orderData['skillspace']['token'] = $token;
+        $orderData['skillspace']['courses'][$courseData['courseId']] = $courseData['groupId'];
+    }
+}
+
+// Формируем описание заказа
+$description = "Оплата курсов: " . implode(", ", $courseTitles);
+
+// Кодируем данные в OrderId
+$orderId = base64_encode(json_encode($orderData));
+
+$terminalKey = "1743774791180";
+$secretKey   = "xL^_j%kKCJ$bb#FO";
+$amount = (int)($totalPrice * 100);
+
+$paymentData = [
+    "TerminalKey"     => $terminalKey,
+    "Amount"          => (string)$amount,
+    "OrderId"         => $orderId,
+    "Description"     => $description,
+    "NotificationURL" => "https://foundation-education.com/pay/tinkoff_callback.php",
+    "Language"        => "ru",
+    "PayType"         => "O",
+    "Recurrent"       => "N",
+    "DATA"            => [
+        "Email" => $email,
+        "Phone" => $phone
+    ]
+];
+
+function generateToken(array $params, string $secretKey): string {
+    $flatParams = array_filter($params, fn($v) => !is_array($v));
+    $flatParams['Password'] = $secretKey;
+    ksort($flatParams);
+    $tokenString = implode('', $flatParams);
+    return hash('sha256', $tokenString);
+}
+
+$token = generateToken($paymentData, $secretKey);
+$paymentData["Token"] = $token;
+
+$ch = curl_init("https://securepay.tinkoff.ru/v2/Init");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
+curl_setopt($ch, CURLOPT_POST, true);
+curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($paymentData));
+
+$response = curl_exec($ch);
+$error = curl_error($ch);
+curl_close($ch);
+
+if ($error) {
+    http_response_code(500);
+    echo json_encode(["error" => "cURL error: " . $error]);
+    exit;
+}
+
+if (!$response) {
+    http_response_code(500);
+    echo json_encode(["error" => "Empty response received from Tinkoff API"]);
+    exit;
+}
+
+$tinkoffData = json_decode($response, true);
+
+if (!isset($tinkoffData['Success']) || !$tinkoffData['Success']) {
+    http_response_code(400);
+    $errMsg = $tinkoffData['Message'] ?? "Ошибка от Тинькофф";
+    echo json_encode([
+        "error"   => $errMsg,
+        "details" => $tinkoffData
+    ]);
+    exit;
+}
+
+$paymentUrl = $tinkoffData['PaymentURL'] ?? '';
+echo json_encode(["paymentUrl" => $paymentUrl]);

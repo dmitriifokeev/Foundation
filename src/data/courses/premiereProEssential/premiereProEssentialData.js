@@ -10,7 +10,7 @@ import premiereProEssentialProgram from "./premiereProEssentialProgram";
 const premiereProEssentialCourselData = {
   slug: "premiere-pro-essential",
   hero: {
-    title: "Adobe Premiere Pro",
+    title: "Курс Adobe Premiere Pro",
     tag: "C нуля",
     heroSubtitle:
       "В этом курсе вы найдете все необходимое, чтобы начать создавать по настоящему творческие видео. Освойте современные методы видеомонтажа в программе Premiere Pro",
@@ -27,8 +27,14 @@ const premiereProEssentialCourselData = {
     duration: "1 месяц",
     practices: "5 самостоятельных практик",
     projects: "2 проекта",
-    price: "1,990 руб",
+    // price: "1,990 руб",
+    price: "5 руб",
     oldPrice: "3,990 руб",
+
+    // Эти данные обязательны:
+    skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+
+    skillspaceCourses: [{ courseId: "15651", groupId: "25291" }],
 
     about: {
       boxImgTitle:

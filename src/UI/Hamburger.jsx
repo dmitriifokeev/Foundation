@@ -1,18 +1,8 @@
-import { useState } from "react";
+import React from "react";
 
-const Hamburger = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
+const Hamburger = ({ isOpen }) => {
   return (
-    <button
-      onClick={toggleMenu}
-      className="relative w-6 h-6 focus:outline-none"
-      aria-label="Toggle menu"
-    >
+    <button className="relative z-[120]  w-6 h-6 focus:outline-none" aria-label="Toggle menu">
       <span
         className={`block w-6 h-[1px] bg-neutral-50 transform transition-transform origin-center duration-300 ${
           isOpen ? "rotate-45 translate-y-[7px]" : ""

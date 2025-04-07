@@ -12,7 +12,7 @@ import chromeLogo from "../../../assets/img/softLogos/chromeLogo.png";
 const javaScriptEssentialCourseData = {
   slug: "javascript-essential",
   hero: {
-    title: "JavaScript — Полный курс!",
+    title: "Курс по JavaScript!",
     heroSubtitle:
       "В этом курсе вы найдете все о современном языке программирования JavaScript. Станьте Front-end разработчиком на JavaScript.",
     tag: "Со знанием HTML",
@@ -31,8 +31,14 @@ const javaScriptEssentialCourseData = {
     practices: "10 самостоятельных практик",
     tests: "5 тестов",
     projects: "2 проекта",
-    price: "2,990 руб",
+    // price: "2,990 руб",
+    price: "5 руб",
     oldPrice: "5,990 руб",
+
+    // Эти данные обязательны:
+    skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+
+    skillspaceCourses: [{ courseId: "14497", groupId: "23496" }],
 
     about: {
       title:

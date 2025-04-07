@@ -10,7 +10,7 @@ import htmlProProgram from "./htmlProProgram";
 const htmlProCourselData = {
   slug: "html-css-pro",
   hero: {
-    title: "Верстка HTML/CSS (Pro)",
+    title: "Курс Верстка HTML/CSS (Pro)",
     tag: "Со знанием HTML / CSS",
     heroSubtitle:
       "Этот курс сделает вас настоящим 'PRO' верстальщиком веб сайтов! Освойте современные методы создания CSS анимаций, работу с GRID CSS и продвинутые методы адаптации сайтов. Бонус: работа с Git и NPM",
@@ -27,8 +27,14 @@ const htmlProCourselData = {
     duration: "2 месяца",
     practices: "5 самостоятельных практик",
     projects: "2 проекта",
-    price: "2,990 руб",
+    // price: "2,990 руб",
+    price: "5 руб",
     oldPrice: "4,990 руб",
+
+    // Эти данные обязательны:
+    skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+
+    skillspaceCourses: [{ courseId: "15583", groupId: "25193" }],
 
     about: {
       boxImgTitle:

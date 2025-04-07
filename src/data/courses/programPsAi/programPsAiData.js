@@ -13,7 +13,7 @@ const programPsAiCourselData = {
   slug: "ps-ai-program",
   group: ["graphicDesign", "fromZero"], // добавлено свойство group
   hero: {
-    title: "Инструменты веб дизайнера Ps + Ai",
+    title: "Программа: Инструменты веб дизайнера Ps + Ai",
     tag: "C нуля",
     type: "Программа",
     heroSubtitle:
@@ -29,8 +29,17 @@ const programPsAiCourselData = {
     practices: ": 17 самостоятельных практик",
     // tests: "—",
     projects: "5 проектов",
-    price: "3,990 руб",
+    // price: "3,990 руб",
+    price: "5 руб",
     oldPrice: "7,990 руб",
+
+    // Эти данные обязательны:
+    skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+    skillspaceCourses: [
+      { courseId: "15520", groupId: "25113" },
+      { courseId: "15527", groupId: "25123" },
+    ],
+
     about: {
       boxImgTitle:
         "Photoshop — лидер в обработке фото и создании графики. Illustrator — мощный инструмент для векторной графики и логотипов.",

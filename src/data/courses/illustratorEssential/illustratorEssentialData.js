@@ -10,7 +10,7 @@ import illustratorEssentialProgram from "./illustratorEssentialProgram";
 const illustratorEssentialCourselData = {
   slug: "illustrator-essential",
   hero: {
-    title: "Illustrator",
+    title: "Курс Illustrator с нуля",
     tag: "C нуля",
     heroSubtitle:
       "Курс Adobe illustrator, позволит вам быстро освоить инструменты создания иллюстраций, логотипов, иконок и векторов!",
@@ -26,8 +26,14 @@ const illustratorEssentialCourselData = {
     hours: "7,5 часов видео",
     duration: "1 месяц",
     practices: "7 самостоятельных практик",
-    price: "1,990 руб",
+    // price: "1,990 руб",
+    price: "5 руб",
     oldPrice: "3,990 руб",
+
+    // Эти данные обязательны:
+    skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+
+    skillspaceCourses: [{ courseId: "15527", groupId: "25123" }],
 
     about: {
       boxImgTitle:

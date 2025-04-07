@@ -12,7 +12,7 @@ const programAePPCourselData = {
   slug: "video-montage-program",
   group: ["videoMontage", "fromZero"], // добавлено свойство group
   hero: {
-    title: "Видеомантаж + Создание графики в Ae",
+    title: "Программа: Видеомантаж + Создание графики в Ae",
     tag: "C нуля",
     type: "Программа",
     heroSubtitle:
@@ -28,8 +28,19 @@ const programAePPCourselData = {
     practices: "11 самостоятельных практик",
     // tests: "5 проектов",
     projects: "5 проектов",
-    price: "3,490 руб",
+    // price: "3,490 руб",
+    price: "10 руб",
     oldPrice: "6,990 руб",
+
+    // Эти данные обязательны:
+    skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+
+    // несколько курсов с ID и группами
+    skillspaceCourses: [
+      { courseId: "15556", groupId: "25159" },
+      { courseId: "15651", groupId: "25291" },
+    ],
+
     about: {
       boxImgTitle:
         "Adobe Premiere Pro и After Effects — профессиональные программы для видеомонтажа, создания графики и анимации, которые являются стандартом индустрии для работы с видеопроектами",

@@ -15,8 +15,24 @@ export default function Footer() {
               className="lg:w-[180px] w-[100px] cursor-pointer mb-20 sm:mb-0"
             />
 
-            <div className=" text-[10px] text-neutral-400 mb-20 sm:mb-0 ">
-              <p className="mb-4 cursor-pointer hover:underline">Политика конфиденциальности</p>
+            <div className=" text-[10px] text-neutral-400 mb-20 sm:mb-0 space-y-4 flex flex-col">
+              <a
+                href="https://foundation-education.com/privacy-policy"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cursor-pointer hover:underline"
+              >
+                Политика конфиденциальности
+              </a>
+              <a
+                href="https://foundation-education.com/publick-offer"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cursor-pointer hover:underline"
+              >
+                Публичная оферта
+              </a>
+
               <p className="">Все права защищены</p>
             </div>
           </div>

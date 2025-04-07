@@ -10,7 +10,7 @@ import photoshopProProgram from "./photoshopProProgram";
 const photoshopProCourselData = {
   slug: "photoshop-pro",
   hero: {
-    title: "Photoshop (Pro)",
+    title: "Курс Photoshop (Pro)",
     tag: "Со знаниями Photoshop",
     heroSubtitle:
       "Ищите продвинутых техник по работе в photoshop? В этом курсе, Вы изучите все чтобы стать настоящим ассом, в графическом редакторе Adobe Photoshop!",
@@ -27,8 +27,14 @@ const photoshopProCourselData = {
     duration: "1 месяц",
     practices: "7 самостоятельных практик",
     projects: "3 проекта",
-    price: "1,990 руб",
+    // price: "1,990 руб",
+    price: "5 руб",
     oldPrice: "3,990 руб",
+
+    // Эти данные обязательны:
+    skillspaceToken: "bdc987e4-6eb8-35e9-8559-ca8530018d22", // API-ключ курса
+
+    skillspaceCourses: [{ courseId: "15658", groupId: "25302" }],
 
     about: {
       boxImgTitle:
