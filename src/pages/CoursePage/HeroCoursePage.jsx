@@ -53,7 +53,6 @@ function HeroCoursePage({ currentCourse }) {
     // Добавляем курс в корзину
     addToCart(currentCourse);
   };
-  console.log(currentCourse);
 
   // --- Header Content (заголовок, тип, подзаголовок) ---
   const headerContent = (

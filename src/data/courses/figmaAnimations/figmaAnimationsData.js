@@ -25,8 +25,8 @@ const figmaAnimationsData = {
     hours: "6,5 часов видео",
     duration: "1 месяц",
     practices: "3 самостоятельных практик",
-    // price: "1,990 руб",
-    price: "5 руб",
+    price: "1,990 руб",
+    // price: "5 руб",
     oldPrice: "3,990 руб",
 
     // Эти данные обязательны:

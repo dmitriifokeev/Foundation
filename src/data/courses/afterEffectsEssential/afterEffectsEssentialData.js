@@ -28,8 +28,8 @@ const afterEffectsEssentialData = {
     duration: "2 месяца обучения",
     practices: "6 самостоятельных практик",
     projects: "3 проекта",
-    // price: "1,990 руб",
-    price: "5 руб",
+    price: "1,990 руб",
+    // price: "5 руб",
     oldPrice: "4,990 руб",
 
     // Эти данные обязательны:
