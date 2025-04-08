@@ -29,8 +29,8 @@ const programPsAiCourselData = {
     practices: ": 17 самостоятельных практик",
     // tests: "—",
     projects: "5 проектов",
-    // price: "3,990 руб",
-    price: "5 руб",
+    price: "3,990 руб",
+    // price: "5 руб",
     oldPrice: "7,990 руб",
 
     // Эти данные обязательны:

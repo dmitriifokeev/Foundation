@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import woman from "../../assets/img/woman.jpg";
 
 export default function LearningSection() {
   return (
     <section className="container pt-40 pb-40 m-auto lg:pb-80">
       <h2 className="mb-32 text-neutral-900 lg:h1 lg:mb-60 h2 lg:text-neutral-900">
-        Учитесь так, как <br /> удобно именно Вам
+        Учитесь так, как <br /> удобно именно вам
       </h2>
 
       <div className="flex flex-col items-center gap-32 lg:flex-row">
@@ -29,10 +30,10 @@ export default function LearningSection() {
                 ПОЛНАЯ ПРОГРАММА ПО ТЕМЕ
               </div>
               <p className="p-16 bg-gray-100 rounded-md text-neutral-700 body-14">
-                Если не знаете что выбрать для старта - у нас есть{" "}
-                <a href="#" className="underline text-primary-600">
+                Если не знаете, что выбрать для старта — у нас есть{" "}
+                <Link to="/courses#programms" className="underline text-primary-600">
                   программы подготовки
-                </a>{" "}
+                </Link>{" "}
                 конкретных профессий с нуля.
               </p>
             </div>
@@ -43,8 +44,8 @@ export default function LearningSection() {
                 НИКАКИХ ГРУПП ИЗ 20+ ЧЕЛОВЕК
               </div>
               <p className="p-16 bg-gray-100 rounded-md text-neutral-700 body-14">
-                Качественные короткие уроки лично для вас, вместо аудитории в офлайне или в Zoom из
-                20+ человек - где половина лекции - это вода. Еще и опоздать можно.
+                Короткие и понятные уроки — лично для вас. Без Zoom-групп из 20+ человек, где
+                половина лекции — вода. Ещё и опоздать можно.
               </p>
             </div>
           </div>

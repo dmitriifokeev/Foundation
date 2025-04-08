@@ -62,7 +62,8 @@ function HeroCoursePage({ currentCourse }) {
         <span className="text-neutral-600 text-[12px]">•</span>
         <span className={`body-14 font-medium px-3 rounded-full ${levelClasses}`}>{tag}</span>
       </div>
-      <h1 className="mb-16 sm:h1 h2 sm:text-neutral-900 text-neutral-900">{title}</h1>
+      <h2 className="mb-16 sm:h1 h2 sm:text-neutral-900 text-neutral-900">{title}</h2>
+      <h1 className="sr-only">{title} школы Foundation Дмитрия Фокеева</h1>
       <p className="mb-32 lg:mb-40 lg:body-18 body-16 lg:text-neutral-600 text-neutral-600">
         {heroSubtitle}
       </p>

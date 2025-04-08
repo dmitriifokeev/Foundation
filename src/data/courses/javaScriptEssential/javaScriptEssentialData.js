@@ -31,8 +31,8 @@ const javaScriptEssentialCourseData = {
     practices: "10 самостоятельных практик",
     tests: "5 тестов",
     projects: "2 проекта",
-    // price: "2,990 руб",
-    price: "5 руб",
+    price: "2,990 руб",
+    // price: "5 руб",
     oldPrice: "5,990 руб",
 
     // Эти данные обязательны:

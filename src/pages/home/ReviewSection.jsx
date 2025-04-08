@@ -80,7 +80,7 @@ export default function ReviewsSection({ allReviews, currentCourse }) {
       <div className="container px-4 text-center md:max-w-none">
         {/* Заголовок и подзаголовок */}
         <h2 className="mb-20 lg:h1 h2 text-neutral-900 lg:text-neutral-900">
-          98% студентов проходивших курсы
+          98% студентов, проходивших курсы,
           <br />
           оставляют оценку <span className="text-primary-500">5 из 5</span>
         </h2>

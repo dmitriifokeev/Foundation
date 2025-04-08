@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import hatEducation from "../assets/img/hatEducation.svg";
 import rocketEducation from "../assets/img/rocketEducation.svg";
 import Button from "../UI/Button";
@@ -25,8 +26,9 @@ function BannerNewProfession() {
         />
       </div>
       {/* Кнопка */}
-
-      <Button iconed>Все курсы</Button>
+      <Link to="/courses">
+        <Button iconed>Все курсы</Button>
+      </Link>
 
       {/* Фоновая иконка (правая) */}
     </section>

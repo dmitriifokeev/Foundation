@@ -81,11 +81,28 @@ const CartPopup = ({ onClose, onCheckout }) => {
     }
 
     // Собираем данные
+    // const body = {
+    //   cartItems,
+    //   totalPrice: finalPrice,
+    //   email,
+    //   phone: phone.replace(/\D+/g, ""), // только цифры для payment.php
+    // };
+
     const body = {
-      cartItems,
+      cartItems: cartItems.map((item) => ({
+        hero: {
+          title: item.hero?.title || "",
+        },
+        details: {
+          price: item.details?.price || "",
+          skillspaceToken: item.details?.skillspaceToken || "",
+          skillspaceCourses: item.details?.skillspaceCourses || [],
+        },
+        slug: item.slug || "",
+      })),
       totalPrice: finalPrice,
       email,
-      phone: phone.replace(/\D+/g, ""), // только цифры для payment.php
+      phone: phone.replace(/\D+/g, ""),
     };
 
     const response = await fetch("https://foundation-education.com/pay/payment.php", {

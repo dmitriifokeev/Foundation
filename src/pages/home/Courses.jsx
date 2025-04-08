@@ -2,7 +2,7 @@ import iconLeftSliderBtnWhite from "../../assets/img/buttonsSvg/iconLeftSliderBt
 import iconRightSliderBtnWhite from "../../assets/img/buttonsSvg/iconRightSliderBtnWhite.svg";
 import { useState, useRef, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-// Если у вас Swiper 9+, то импортируйте Navigation из "swiper/modules"
+// Если у вас Swiper 9+, импортируйте Navigation из "swiper/modules"
 import { Navigation } from "swiper/modules";
 import "swiper/css"; // базовые стили Swiper
 
@@ -40,37 +40,45 @@ export function Courses({ pt, staticCategory, showButtons = true }) {
     setActiveCategory(categorySlug);
   }
 
-  // Рефы для навигации слайдеров
+  // Состояния для слайдеров
+  const [coursesSwiper, setCoursesSwiper] = useState(null);
+  const [programsSwiper, setProgramsSwiper] = useState(null);
+
+  // Рефы для навигационных кнопок
   const coursesPrevRef = useRef(null);
   const coursesNextRef = useRef(null);
   const programsPrevRef = useRef(null);
   const programsNextRef = useRef(null);
-  const [coursesSwiper, setCoursesSwiper] = useState(null);
-  const [programsSwiper, setProgramsSwiper] = useState(null);
 
-  // Обновляем навигацию для слайдера курсов с небольшой задержкой
+  // Обновляем навигацию для слайдера курсов, если все элементы готовы
   useEffect(() => {
-    if (coursesSwiper && coursesPrevRef.current && coursesNextRef.current) {
-      setTimeout(() => {
-        coursesSwiper.params.navigation.prevEl = coursesPrevRef.current;
-        coursesSwiper.params.navigation.nextEl = coursesNextRef.current;
-        coursesSwiper.navigation.destroy();
-        coursesSwiper.navigation.init();
-        coursesSwiper.navigation.update();
-      }, 100);
+    if (
+      coursesSwiper &&
+      coursesSwiper.navigation &&
+      coursesPrevRef.current &&
+      coursesNextRef.current
+    ) {
+      coursesSwiper.params.navigation.prevEl = coursesPrevRef.current;
+      coursesSwiper.params.navigation.nextEl = coursesNextRef.current;
+      coursesSwiper.navigation.destroy();
+      coursesSwiper.navigation.init();
+      coursesSwiper.navigation.update();
     }
   }, [coursesSwiper, coursesPrevRef.current, coursesNextRef.current]);
 
-  // Аналогично обновляем навигацию для слайдера программ
+  // Обновляем навигацию для слайдера программ, если все элементы готовы
   useEffect(() => {
-    if (programsSwiper && programsPrevRef.current && programsNextRef.current) {
-      setTimeout(() => {
-        programsSwiper.params.navigation.prevEl = programsPrevRef.current;
-        programsSwiper.params.navigation.nextEl = programsNextRef.current;
-        programsSwiper.navigation.destroy();
-        programsSwiper.navigation.init();
-        programsSwiper.navigation.update();
-      }, 100);
+    if (
+      programsSwiper &&
+      programsSwiper.navigation &&
+      programsPrevRef.current &&
+      programsNextRef.current
+    ) {
+      programsSwiper.params.navigation.prevEl = programsPrevRef.current;
+      programsSwiper.params.navigation.nextEl = programsNextRef.current;
+      programsSwiper.navigation.destroy();
+      programsSwiper.navigation.init();
+      programsSwiper.navigation.update();
     }
   }, [programsSwiper, programsPrevRef.current, programsNextRef.current]);
 
@@ -93,6 +101,7 @@ export function Courses({ pt, staticCategory, showButtons = true }) {
               nextEl: coursesNextRef.current,
             }}
             onBeforeInit={(swiper) => {
+              // Назначаем кнопки навигации до инициализации слайдера
               swiper.params.navigation.prevEl = coursesPrevRef.current;
               swiper.params.navigation.nextEl = coursesNextRef.current;
             }}

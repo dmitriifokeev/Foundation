@@ -5,6 +5,7 @@ import NavBar from "./NavBar";
 import ScrollToTop from "../utility/ScrollToTop";
 import CartPopup from "../components/CartPopup";
 import { useCart } from "../context/CartContext";
+import ScrollToHashElement from "../hooks/ScrollToHashElement";
 
 function Layout() {
   const { showCart, setShowCart, cartItems } = useCart();
@@ -17,6 +18,7 @@ function Layout() {
 
   return (
     <>
+      <ScrollToHashElement />
       <ScrollToTop />
       <NavBar />
       <Outlet />

@@ -30,8 +30,8 @@ const reactJsEssentialCourseData =
       practices: "13 самостоятельных практик",
       tests: "12 тестов",
       projects: "2 проекта",
-      // price: "2,990 руб",
-      price: "5 руб",
+      price: "2,990 руб",
+      // price: "5 руб",
       oldPrice: "5,990 руб",
 
       // Эти данные обязательны:

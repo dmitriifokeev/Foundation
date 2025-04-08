@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import infiniti from "../assets/img/infinityLable.png";
 
 function BannerLifetimeAccess() {
@@ -15,7 +16,10 @@ function BannerLifetimeAccess() {
             Пожизненный доступ ко всем материалам курса. <br /> Все обновления курсов бесплатны.
           </h3>
 
-          <button className="px-16 py-4 text-primary-100 transition bg-primary-100/20 rounded-[4px] hover:bg-primary-300/20">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="px-16 py-4 text-primary-100 transition bg-primary-100/20 rounded-[4px] hover:bg-primary-300/20"
+          >
             Начните учиться сейчас
           </button>
         </div>

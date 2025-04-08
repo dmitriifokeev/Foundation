@@ -1,14 +1,20 @@
-// src/App.jsx
+import React, { Suspense, lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
 import { CartProvider } from "./context/CartContext";
 import Layout from "./components/Layout";
-import Home from "./pages/home/Home";
-import CoursePage from "./pages/CoursePage/CoursePage";
-import CoursesPage from "./pages/CoursesPage/CoursesPage";
-import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
-import NotFoundPage from "./components/NotFoundPage";
-import PublickOffer from "./pages/PublickOffer/PublickOffer";
+import ClipLoader from "react-spinners/ClipLoader";
 
+// Ленивые загрузки страниц
+const Home = lazy(() => import("./pages/home/Home"));
+const CoursePage = lazy(() => import("./pages/CoursePage/CoursePage"));
+const CoursesPage = lazy(() => import("./pages/CoursesPage/CoursesPage"));
+const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy/PrivacyPolicy"));
+const PublickOffer = lazy(() => import("./pages/PublickOffer/PublickOffer"));
+const ThanksPage = lazy(() => import("./pages/ThanksPage/ThanksPage"));
+const NotFoundPage = lazy(() => import("./components/NotFoundPage"));
+
+// Конфигурация роутера
 const router = createBrowserRouter([
   {
     path: "/",
@@ -23,13 +29,26 @@ const router = createBrowserRouter([
       { path: "courses/:courseId", element: <CoursePage /> },
       { path: "privacy-policy", element: <PrivacyPolicy /> },
       { path: "publick-offer", element: <PublickOffer /> },
+      { path: "thanks-page", element: <ThanksPage /> },
       { path: "*", element: <NotFoundPage /> },
     ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <HelmetProvider>
+      <Suspense
+        fallback={
+          <div className="flex items-center justify-center h-screen">
+            <ClipLoader size={50} color="#123abc" loading={true} />
+          </div>
+        }
+      >
+        <RouterProvider router={router} />
+      </Suspense>
+    </HelmetProvider>
+  );
 }
 
 export default App;

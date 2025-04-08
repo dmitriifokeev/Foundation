@@ -21,7 +21,10 @@ function Banner30Days() {
           </h3>
 
           <div className="flex justify-between">
-            <button className="px-16 py-4 text-secondary-800 transition bg-secondary-700/20 rounded-[4px] hover:bg-secondary-800/20 h-fit mr-8">
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="px-16 py-4 text-secondary-800 transition bg-secondary-700/20 rounded-[4px] hover:bg-secondary-800/20 h-fit mr-8"
+            >
               Начните учиться сейчас
             </button>
             <p className="body-10 text-secondary-600 sm:text-secondary-600 sm520:max-w-[200px] sm:max-w-[180px]  md:max-w-[270px] max-w-[120px] text-[8px] sm:body-10">

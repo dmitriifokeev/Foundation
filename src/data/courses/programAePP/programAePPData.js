@@ -28,8 +28,8 @@ const programAePPCourselData = {
     practices: "11 самостоятельных практик",
     // tests: "5 проектов",
     projects: "5 проектов",
-    // price: "3,490 руб",
-    price: "10 руб",
+    price: "3,490 руб",
+    // price: "10 руб",
     oldPrice: "6,990 руб",
 
     // Эти данные обязательны:

@@ -51,8 +51,7 @@ export default function AdvantagesSection() {
               >
                 <h4 className="mb-8 font-semibold h4 text-neutral-900">30 дней гарантии</h4>
                 <p className="body-14 text-neutral-600 max-w-[300px]">
-                  * 100% возврат средств в течении 30 дней, <br /> если вы не прошли более 35%
-                  курса.
+                  * 100% возврат средств в течение 30 дней, <br /> если вы прошли не более 35% курса
                 </p>
               </div>
 
@@ -99,8 +98,8 @@ export default function AdvantagesSection() {
                 <h4 className="mb-8 font-semibold h4 text-neutral-900">
                   Более 5 000 реальных отзывов
                 </h4>
-                <p className="body text-gray-600 max-w-[300px]">
-                  * Более 1300 отзывов{" "}
+                <p className="body-14 text-gray-600 max-w-[300px]">
+                  * Более 1 300 отзывов на{" "}
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
@@ -109,7 +108,7 @@ export default function AdvantagesSection() {
                   >
                     Stepik
                   </a>{" "}
-                  и более 8000 отзывов{" "}
+                  и свыше 9000 отзывов на{" "}
                   <a
                     target="_blank"
                     rel="noopener noreferrer"
@@ -163,7 +162,7 @@ export default function AdvantagesSection() {
                   Пожизненный доступ к курсам
                 </h4>
                 <p className="body-14 text-neutral-600 max-w-[300px]">
-                  * Курсы обновляются ежегодно. Все будущие обновления купленного курса бесплатны.
+                  * Курсы обновляются ежегодно. Все будущие обновления для вас — бесплатны.
                 </p>
               </div>
 
@@ -192,7 +191,7 @@ export default function AdvantagesSection() {
               />
               <h3 className="relative h3 w-[280px] uppercase text-white self-start z-30">
                 <span className="text-neutral-400">Обучение</span> современным{" "}
-                <span className="text-neutral-400">навыкам для</span> жизни, карьеры и развития
+                <span className="text-neutral-400">навыкам для</span> жизни и карьеры
               </h3>
               <div className="absolute inset-0 bg-slate-900/30"></div>
             </div>

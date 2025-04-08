@@ -9,6 +9,7 @@ import bgBrownLines2 from "../../assets/img/bgBrownLines2.jpg";
 import bigStar from "../../assets/img/bigStar.svg";
 import { createBackgroundStyles } from "../../utility/bgImg";
 import useSwiperNavigation from "../../hooks/useSwiperNavigationBtn";
+import { Link } from "react-router-dom";
 
 const slides = [
   {
@@ -17,7 +18,7 @@ const slides = [
       {
         id: 1,
         title: "ОТВЕТЫ НА ВСЕ ВОПРОСЫ ПО КУРСАМ ЛИЧНО ОТ АВТОРА",
-        description: "Никаких ответов от кураторов. Только от создателя курса.",
+        description: "Без кураторов. Только прямое общение с автором курса.",
         background: "bg-white text-neutral-900",
         badge: "КАЖДЫЙ ДЕНЬ · БЕЗ ВЫХОДНЫХ · ЛИЧНО ·",
         whiteText: false,
@@ -26,7 +27,7 @@ const slides = [
       {
         id: 2,
         title: "ПОКАЗЫВАЕМ, КАК ДЕЛАТЬ, А НЕ РАССКАЗЫВАЕМ",
-        description: "Преподаватель выполняет задачи вместе со студентом.",
+        description: "Преподаватель решает задачи вместе с вами — шаг за шагом.",
         background: "bg-blue-900 text-white",
         backgroundIMG: bgBlueLines,
         whiteText: true,
@@ -77,7 +78,9 @@ export default function SupportSection() {
             Поддерживаем <br /> и помогаем <span className="text-primary-500">лично</span>
           </h2>
           <div className="items-end hidden sm:flex">
-            <Button iconed>Все курсы</Button>
+            <Link to="/courses">
+              <Button iconed>Все курсы</Button>
+            </Link>
           </div>
         </div>
       </div>

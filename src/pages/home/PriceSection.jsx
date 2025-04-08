@@ -2,6 +2,7 @@ import rubleCoin from "../../assets/img/rubleCoin.png";
 import Button from "../../UI/Button";
 import bgCircles from "../../assets/img/bgLines.svg";
 import { createBackgroundStyles } from "../../utility/bgImg";
+import { Link } from "react-router-dom";
 
 function PriceSection() {
   return (
@@ -20,7 +21,9 @@ function PriceSection() {
         </div>
         <div className="flex flex-col order-3 lg:col-start-1 lg:row-start-2">
           <div>
-            <Button iconed>Все курсы</Button>
+            <Link to="/courses">
+              <Button iconed>Все курсы</Button>
+            </Link>
           </div>
           <p className=" body-12 text-neutral-600 max-w-[300px] order-[-1] mb-32">
             *Мы создаём не только лучшие, но и самые доступные курсы.
@@ -75,7 +78,7 @@ function PriceSection() {
               С ГАРАНТИЕЙ <br /> 30 ДНЕЙ
             </h3>
             <p className="body-12 text-neutral-600 max-w-[57%] relative z-20">
-              100% возврат средств в течение 30 дней, если вы прошли менее 35% курса.
+              100% возврат средств в течение 30 дней, если вы прошли менее 30% курса.
             </p>
             <div className="body-10 absolute lg:top-[16px] lg:right-[-74px] right-[-50px] bg-neutral-700 rounded-lg rotate-[-20deg] sm:max-w-[250px] sm:pl-20 sm:pr-60 max-w-[220px] sm:right-[-40px] lg:pl-20 lg:pt-20  h-[200px] font-light pl-12 pt-12 top-20">
               <p className="max-w-[170px] text-neutral-300 pr-60 sm:pr-0">

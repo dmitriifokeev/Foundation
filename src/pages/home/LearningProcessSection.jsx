@@ -11,7 +11,7 @@ import useSwiperNavigation from "../../hooks/useSwiperNavigationBtn";
 const steps = [
   {
     id: 1,
-    title: "Короткие видео уроки",
+    title: "Короткие видеоуроки",
     description: [
       "Короткие видео уроки на конкретную тему длиной в среднем 10 мин.",
       "Вся вода и прочая болтовня вырезана и выброшена.",
@@ -68,7 +68,7 @@ export default function LearningProcessSection() {
       <div className="container m-auto">
         {/* Заголовок */}
         <h2 className="mb-32 lg:h1 h2 text-neutral-900 lg:text-neutral-900">
-          Процесс обучения <br /> состоит из <span className="text-primary-500">3-х этапов</span>
+          Процесс обучения <br /> состоит из <span className="text-primary-500">трёх этапов</span>
         </h2>
 
         {/* Контейнер слайдера */}

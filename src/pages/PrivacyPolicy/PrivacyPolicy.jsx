@@ -1,9 +1,14 @@
 // src/pages/PrivacyPolicy.jsx
 import React from "react";
+import { Helmet } from "react-helmet";
 
 const PrivacyPolicy = () => {
   return (
     <div className="container p-8 mx-auto">
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+        <title>Страница не для индексации</title>
+      </Helmet>
       <h1 className="mb-4 text-3xl font-bold">Политика конфиденциальности</h1>
       <p className="mb-4">
         Политика в отношении обработки персональных данных 1. Общие положения Настоящая политика

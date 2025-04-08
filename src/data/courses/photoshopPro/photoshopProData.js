@@ -27,8 +27,8 @@ const photoshopProCourselData = {
     duration: "1 месяц",
     practices: "7 самостоятельных практик",
     projects: "3 проекта",
-    // price: "1,990 руб",
-    price: "5 руб",
+    price: "1,990 руб",
+    // price: "5 руб",
     oldPrice: "3,990 руб",
 
     // Эти данные обязательны:

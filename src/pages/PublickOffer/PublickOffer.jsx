@@ -1,6 +1,12 @@
+import { Helmet } from "react-helmet-async";
+
 function PublickOffer() {
   return (
     <div className="container p-8 mx-auto">
+      <Helmet>
+        <meta name="robots" content="noindex, nofollow" />
+        <title>Страница не для индексации</title>
+      </Helmet>
       <h1 className="mb-4 text-3xl font-bold">Публичная оферта</h1>
       <p className="mb-4">
         Индивидуальный предприниматель Фокеев Дмитрий Сергеевич, ИНН 7806268916, ОГРНИП

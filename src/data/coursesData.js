@@ -33,7 +33,7 @@ import programPsAiData from "./courses/programPsAi/programPsAiData";
 const coursesData = [
   {
     slug: "webDevelopment",
-    title: "Веб разработка",
+    title: "Веб-разработка",
     description: "Курсы по веб-разработке",
     courses: [
       javaScriptEssentialCourseData,
@@ -50,7 +50,7 @@ const coursesData = [
   },
   {
     slug: "webDesign",
-    title: "Веб Дизайн",
+    title: "Веб-Дизайн",
     description: "Курсы по веб-дизайну",
     courses: [webDesignFigmaEssentialData, figmaAnimationsData, designTheoryData],
   },

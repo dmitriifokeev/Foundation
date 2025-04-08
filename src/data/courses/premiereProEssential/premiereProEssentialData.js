@@ -27,8 +27,8 @@ const premiereProEssentialCourselData = {
     duration: "1 месяц",
     practices: "5 самостоятельных практик",
     projects: "2 проекта",
-    // price: "1,990 руб",
-    price: "5 руб",
+    price: "1,990 руб",
+    // price: "5 руб",
     oldPrice: "3,990 руб",
 
     // Эти данные обязательны:

@@ -27,8 +27,8 @@ const wordpressCourseEssentialData = {
     duration: "2 месяца",
     practices: "4 самостоятельных практик",
     projects: "2 проекта",
-    // price: "2,490 руб",
-    price: "5 руб",
+    price: "2,490 руб",
+    // price: "5 руб",
     oldPrice: "4,990 руб",
 
     // Эти данные обязательны:

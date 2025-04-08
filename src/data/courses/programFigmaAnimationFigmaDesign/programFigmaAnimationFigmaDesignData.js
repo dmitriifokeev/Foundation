@@ -29,8 +29,8 @@ const programFigmaAnimationFigmaDesignCourselData = {
     practices: "8 самостоятельных практик",
     // tests: "—",
     projects: "2 проекта",
-    // price: "3,990 руб",
-    price: "5 руб",
+    price: "3,990 руб",
+    // price: "5 руб",
     oldPrice: "7,990 руб",
 
     // Эти данные обязательны:

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { allCategoriesData } from "../../data/filteredCoursesData";
 import Button from "../../UI/Button";
 
@@ -23,7 +24,9 @@ export default function CoursesButtons({ activeCategory, onCategoryChange }) {
         ))}
       </div>
       <div className="">
-        <Button iconed>Все курсы</Button>
+        <Link to="/courses">
+          <Button iconed>Все курсы</Button>
+        </Link>
       </div>
     </div>
   );

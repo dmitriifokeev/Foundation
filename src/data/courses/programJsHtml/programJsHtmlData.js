@@ -29,8 +29,8 @@ const programJsHtmlCourselData = {
     practices: "15 самостоятельных практик",
     tests: "5 тестов",
     projects: "4 проекта",
-    // price: "4,990 руб",
-    price: "5 руб",
+    price: "4,990 руб",
+    // price: "5 руб",
     oldPrice: "9,990 руб",
 
     // Эти данные обязательны:
